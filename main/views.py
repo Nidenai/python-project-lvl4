@@ -16,7 +16,7 @@ class UserUpdate(TemplateView):
     template_name = 'main/update_user.html'
 
 
-class Login(TemplateView):
+class LoginView(TemplateView):
     template_name = 'main/login_page.html'
 
 
