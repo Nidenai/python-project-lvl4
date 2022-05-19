@@ -6,3 +6,6 @@ export:
 
 poetry:
 	export PATH="$HOME/.local/bin:$PATH"
+
+venv:
+	source project/bin/activate
