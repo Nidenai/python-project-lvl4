@@ -3,7 +3,23 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
-    <h1>Главная страница</h1>
+<div class="container-fluid">
+<ul class="list-group">
+    <li class="list-group-item">
+    {% if user.is_authenticated %}
+        Приветствую Вас, {{ user }}!
+    {% else %}
+        Приветствую Вас, Гость! Хотите <a href="{% url 'register' %}">Зарегистрироваться</a>?
+    {% endif %}
+
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'home' %}">Главная страница</a>
+    </li>
+</ul>
+</div>
+<div class="container-fluid">
+    <h1>Менеджер задач</h1>
     <hr>
 
     {% if user.is_authenticated %}
@@ -12,4 +28,5 @@
         <a href="{% url 'login' %}">Вход</a>
         <a href="{% url 'register' %}">Регистрация</a>
     {% endif %}
+    </div>
 {% endblock %}
