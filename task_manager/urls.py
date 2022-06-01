@@ -19,9 +19,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from .views import HomepageView
+from tasks.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomepageView.as_view(), name='home'),
     path('users/', include('users.urls')),
+    path('labels/', LabelPage.as_view(), name='labels'),
+    path('tasks/', TaskPage.as_view(), name='tasks'),
+    path('add_task/', AddTask.as_view(), name='add_t'),
+    path('add_label/', AddLabel.as_view(), name='add_l'),
 ]

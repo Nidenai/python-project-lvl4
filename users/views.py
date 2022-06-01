@@ -1,7 +1,8 @@
 from django.contrib.auth import authenticate, login
-from django.views import View
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
+from django.views import View
+from django.views.generic import TemplateView
 from users.forms import UserCreationForm
 
 
@@ -28,3 +29,7 @@ class Register(View):
             'form': form
         }
         return render(request, self.template_name, context)
+
+
+class UserPage(TemplateView):
+    template_name = 'user.html'

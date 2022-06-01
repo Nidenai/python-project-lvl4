@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Метки{% endblock %}
+
+
+{% block content %}
+        <ul>
+            <li>
+                    {% if user.is_authenticated %}
+                        <button><a href="{% url 'add_l' %}">Создать метку</a></button>
+                    {% else %}
+
+                    {% endif %}
+            </li>
+        </ul>
+    {% for label in labels %}
+        <ul>
+            <li>
+                {{label.label_name}} {{label.label_date}}
+            </li>
+        </ul>
+    {% endfor %}
+{% endblock %}

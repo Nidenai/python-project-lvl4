@@ -7,7 +7,23 @@
 
 </head>
 <body>
+<div class="container-fluid">
+<ul class="list-group">
+    <li class="list-group-item">
+    {% if user.is_authenticated %}
+        Приветствую Вас, <a href="{% url 'user' %}">{{ user }}</a>
+    {% else %}
+        Приветствую Вас, Гость! Хотите <a href="{% url 'register' %}">Зарегистрироваться</a>?
+    {% endif %}
 
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'home' %}">Главная страница</a>
+        <a href="{% url 'tasks' %}">Задачи</a>
+        <a href="{% url 'labels' %}">Метки</a>
+    </li>
+</ul>
+</div>
 {% block content %}
 {% endblock %}
 </div>

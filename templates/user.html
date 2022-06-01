@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Страница пользователя{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <h1>Менеджер задач</h1>
+    <hr>
+
+    {% if user.is_authenticated %}
+        Привет, {{ user }}
+
+    {% for filename in  userfileslist%}
+   <img src={{filename}}/>
+    {% endfor %}
+
+    {% else %}
+        Тут никого нет
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Задачи{% endblock %}
+
+
+{% block content %}
+        <ul>
+            <li>
+                    {% if user.is_authenticated %}
+                        <button><a href="{% url 'add_t' %}">Создать задачу</a></button>
+                    {% else %}
+
+                    {% endif %}
+            </li>
+        </ul>
+    {% for task in tasks %}
+        <ul>
+            <li>
+                <a href="#">{{task.title}}</a> {{task.task_date}}
+            </li>
+        </ul>
+    {% endfor %}
+{% endblock %}
