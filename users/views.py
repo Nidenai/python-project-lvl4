@@ -1,9 +1,9 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import TemplateView
-from users.forms import UserCreationForm, UserList
+from django.views.generic import TemplateView, ListView
+
+from users.forms import UserCreationForm, User
 
 
 class Register(View):
@@ -33,14 +33,3 @@ class Register(View):
 
 class UserPage(TemplateView):
     template_name = 'user.html'
-
-
-class UsersPage(TemplateView):
-    template_name = 'users.html'
-
-    def get(self, request):
-        users = UserList.objects.all()
-        context = {
-            'users': users
-        }
-        return render(request, self.template_name, context)

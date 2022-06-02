@@ -9,9 +9,3 @@ class UserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ('username', 'first_name', 'last_name')
-
-
-class UserList(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'date_joined')
