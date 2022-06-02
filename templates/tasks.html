@@ -6,17 +6,17 @@
 {% block content %}
         <ul>
             <li>
-                    {% if user.is_authenticated %}
-                        <button><a href="{% url 'add_t' %}">Создать задачу</a></button>
-                    {% else %}
+                {% if user.is_authenticated %}
+                    <button><a href="{% url 'add_t' %}">Создать задачу</a></button>
+                {% else %}
 
-                    {% endif %}
+                {% endif %}
             </li>
         </ul>
     {% for task in tasks %}
         <ul>
             <li>
-                <a href="#">{{task.title}}</a> {{task.task_date}}
+                {{task.id}} <a href="#">{{task.title}}</a> {{task.task_date}}
             </li>
         </ul>
     {% endfor %}

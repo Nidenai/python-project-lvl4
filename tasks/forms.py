@@ -5,10 +5,10 @@ from .models import *
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Tasks
-        fields = ('title', 'description', 'mark')
+        fields = ('id', 'title', 'description', 'mark')
 
 
 class LabelForm(forms.ModelForm):
     class Meta:
         model = Labels
-        fields = ('label_name',)
+        fields = ('id', 'label_name')
