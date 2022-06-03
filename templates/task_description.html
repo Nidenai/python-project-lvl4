@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Задачи{% endblock %}
+
+
+{% block content %}
+<h2>{{task.title}}</h2>
+<p>{{task.description}}</p>
+<p>{{task.task_date}}</p>
+<p>{{task.label}}</p>
+<p>{{task.status}}</p>
+{% endblock %}

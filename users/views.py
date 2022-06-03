@@ -1,9 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, ListView
-
-from users.forms import UserCreationForm, User
+from users.models import User
+from users.forms import UserCreationForm
 
 
 class Register(View):
@@ -31,5 +32,8 @@ class Register(View):
         return render(request, self.template_name, context)
 
 
-class UserPage(TemplateView):
-    template_name = 'user.html'
+
+class UserList(ListView):
+    queryset = User.objects.order_by('id')
+    template_name = 'users.html'
+    context_object_name = 'users'

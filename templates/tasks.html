@@ -13,11 +13,32 @@
                 {% endif %}
             </li>
         </ul>
-    {% for task in tasks %}
+
         <ul>
-            <li>
-                {{task.id}} <a href="#">{{task.title}}</a> {{task.task_date}}
-            </li>
+                <table border="1" cellspacing="5" width="90%" summary="Список задач" align="center">
+                    <tr>
+                        <th>ID задачи</th>
+                        <th>Наименование</th>
+                        <th>Статус</th>
+                        <th>Автор</th>
+                        <th>Исполнитель</th>
+                        <th>Дата создания</th>
+                        <th>    </th>
+                    </tr>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>
+                           {{task.id}}
+                        </td>
+                        <td>
+                           <a href="{% url 'desc' task.id %}">{{task.title}}</a>
+                        </td>
+                        <td>
+                           {{task.status}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
         </ul>
-    {% endfor %}
 {% endblock %}

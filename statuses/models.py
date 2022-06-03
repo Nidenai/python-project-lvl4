@@ -7,3 +7,6 @@ class Statuses(models.Model):
     class Meta:
         verbose_name = 'Статус'
         verbose_name_plural = 'Статусы'
+
+    def __str__(self):
+        return self.status_name

@@ -31,3 +31,14 @@ class AddTask(View):
             'form': form
         }
         return render(request, self.template_name, context)
+
+
+class TaskDescription(View):
+    template_name = 'task_description.html'
+
+    def get(self, request, task_id):
+        task = Tasks.objects.get(pk=task_id)
+        context = {
+            'task': task
+        }
+        return render(request, self.template_name, context)

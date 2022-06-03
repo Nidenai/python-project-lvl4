@@ -7,3 +7,6 @@ class Labels(models.Model):
     class Meta:
         verbose_name = 'Метка'
         verbose_name_plural = 'Метки'
+
+    def __str__(self):
+        return self.label_name

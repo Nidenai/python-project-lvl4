@@ -4,11 +4,24 @@
 
 
 {% block content %}
-    {% for user in users %}
-        <ul>
-            <li>
-                {{user.id}}  {{user.username}} {{user.first_name}} {{user.last_name}} {{user.date_joined}}
-            </li>
+<ul>
+                <table border="1" cellspacing="5" width="50%" summary="Список задач" align="left">
+                    <tr>
+                        <th>ID пользователя</th>
+                        <th>Полное имя</th>
+                        <th>                  </th>
+                    </tr>
+                    {% for user in users %}
+                    <tr>
+                        <td>
+                           {{user.id}}
+                        </td>
+                        <td>
+                           {{user.first_name}} {{user.last_name}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
         </ul>
-    {% endfor %}
 {% endblock %}
