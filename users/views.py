@@ -2,9 +2,10 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, ListView
-from users.models import User
+from django.views.generic import ListView, UpdateView, DeleteView
+
 from users.forms import UserCreationForm
+from users.models import User
 
 
 class Register(View):
@@ -32,8 +33,19 @@ class Register(View):
         return render(request, self.template_name, context)
 
 
-
 class UserList(ListView):
     queryset = User.objects.order_by('id')
     template_name = 'users.html'
     context_object_name = 'users'
+
+
+class UserUpdate(UpdateView):
+    template_name = 'user_update.html'
+    model = User
+    fields = ['first_name', 'last_name']
+    success_url = reverse_lazy('users')
+
+class UserDelete(DeleteView):
+    template_name = 'user_delete.html'
+    model = User
+    success_url = reverse_lazy('users')
