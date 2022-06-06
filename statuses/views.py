@@ -7,13 +7,13 @@ from .models import *
 
 
 class StatusPage(ListView):
-    template_name = 'statuses.html'
+    template_name = 'statuses/statuses.html'
     queryset = Statuses.objects.order_by('id')
     context_object_name = 'statuses'
 
 
 class AddStatus(View):
-    template_name = 'add_status.html'
+    template_name = 'statuses/add_status.html'
 
     def get(self, request):
         context = {

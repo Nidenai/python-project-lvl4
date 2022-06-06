@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Статусы{% endblock %}
+
+
+{% block content %}
+<ul>
+    <li>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_s">
+            Добавить статус
+        </button>
+        {% include 'statuses/add_status.html' %}
+    </li>
+</ul>
+
+<table border="1" cellspacing="5" width="90%" summary="Список задач" align="center">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Наименование
+        </th>
+        <th>
+            Дата создания
+        </th>
+        <th></th>
+        {% for status in statuses %}
+    </tr>
+    <tr>
+
+    </tr>
+    <td>
+        {{status.id}}
+    </td>
+    <td>
+        {{status.status_name}}
+    </td>
+    <td>
+        {{status.status_date}}
+    </td>
+    <td>
+
+    </td>
+    {% endfor %}
+</table>
+
+{% endblock %}

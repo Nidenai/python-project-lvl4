@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Задачи{% endblock %}
+
+
+{% block content %}
+<ul>
+    <li>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_t">
+            Добавить задачу
+        </button>
+    </li>
+</ul>
+{% include 'tasks/add_task.html' %}
+<ul>
+    <table border="1" cellspacing="5" width="90%" summary="Список задач" align="center">
+        <tr>
+            <th>ID задачи</th>
+            <th>Наименование</th>
+            <th>Статус</th>
+            <th>Автор</th>
+            <th>Исполнитель</th>
+            <th>Дата создания</th>
+            <th></th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>
+                {{task.id}}
+            </td>
+            <td>
+                <a href="{% url 'desc' task.id %}">{{task.title}}</a>
+            </td>
+            <td>
+                {{task.status}}
+            </td>
+            <td>
+                {{task.created_user}}
+            </td>
+            <td>
+                {{task.assigned_user}}
+            </td>
+            <td>
+                <a href="{% url 'task_update' task.id %}">Изменить</a>
+                <a href="{% url 'task_delete' task.id %}">Удалить</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</ul>
+{% endblock %}

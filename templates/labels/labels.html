@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Метки{% endblock %}
+
+
+{% block content %}
+        <ul>
+            <li>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_l">
+                    Добавить метку
+                </button>
+                {% include 'labels/add_label.html' %}
+            </li>
+        </ul>
+<table border="1" cellspacing="5" width="90%" summary="Список задач" align="center">
+    <tr>
+        <th>ID задачи</th>
+        <th>Наименование</th>
+        <th>Дата создания</th>
+        <th></th>
+    </tr>
+    {% for label in labels %}
+    <tr>
+        <td>
+            {{label.id}}
+        </td>
+        <td>
+            {{label.label_name}}
+        </td>
+        <td>
+            {{label.label_date}}
+        </td>
+        <td>
+            <a href="{% url 'label_update' label.id %}">Изменить</a>
+            <a href="{% url 'label_delete' label.id %}">Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

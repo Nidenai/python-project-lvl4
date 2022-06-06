@@ -9,7 +9,7 @@ from users.models import User
 
 
 class Register(View):
-    template_name = 'registration/register.html'
+    template_name = 'users/register.html'
 
     def get(self, request):
         context = {
@@ -35,17 +35,17 @@ class Register(View):
 
 class UserList(ListView):
     queryset = User.objects.order_by('id')
-    template_name = 'users.html'
+    template_name = 'users/users.html'
     context_object_name = 'users'
 
 
 class UserUpdate(UpdateView):
-    template_name = 'user_update.html'
+    template_name = 'users/user_update.html'
     model = User
     fields = ['first_name', 'last_name']
     success_url = reverse_lazy('users')
 
 class UserDelete(DeleteView):
-    template_name = 'user_delete.html'
+    template_name = 'users/user_delete.html'
     model = User
     success_url = reverse_lazy('users')
