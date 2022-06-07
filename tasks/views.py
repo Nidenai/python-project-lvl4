@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import ListView, UpdateView, DeleteView
+from django.views.generic import ListView, UpdateView, DeleteView, FormView
 
 from .forms import *
 from .models import *
@@ -13,25 +13,17 @@ class TaskPage(ListView):
     context_object_name = 'tasks'
 
 
-class AddTask(View):
+class AddTask(FormView):
     template_name = 'tasks/add_task.html'
+    form_class = TaskForm
+    success_url = '/tasks'
 
-    def get(self, request):
-        context = {
-            'form': TaskForm
-        }
-        return render(request, self.template_name, context)
+    def form_valid(self, form):
+        task_form = form.save()
+        task_form.created_user.add(self.request.username)
+        task_form.save()
+        return super().form_valid(form)
 
-    def post(self, request):
-        form = TaskForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('tasks')
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
 
 
 class TaskDescription(View):
