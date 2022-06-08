@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
@@ -39,13 +40,20 @@ class UserList(ListView):
     context_object_name = 'users'
 
 
-class UserUpdate(UpdateView):
+class UserUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'users/user_update.html'
     model = User
     fields = ['first_name', 'last_name']
     success_url = reverse_lazy('users')
 
-class UserDelete(DeleteView):
+    def test_func(self):
+        return self.request.user.id == self.kwargs['pk']
+
+
+class UserDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'users/user_delete.html'
     model = User
     success_url = reverse_lazy('users')
+
+    def test_func(self):
+        return self.request.user.id == self.kwargs['pk']
