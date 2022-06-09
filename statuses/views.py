@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import ProtectedError
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView
 
+from task_manager.mixins import CustomAddForm
 from .forms import *
 from .models import *
 
@@ -13,25 +16,11 @@ class StatusPage(ListView):
     context_object_name = 'statuses'
 
 
-class AddStatus(View):
+class AddStatus(CustomAddForm):
     template_name = 'statuses/add_status.html'
-
-    def get(self, request):
-        context = {
-            'form': StatusForm
-        }
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-        form = StatusForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('statuses')
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
+    form_to_post = StatusForm
+    model = Statuses
+    redirect_to = 'statuses'
 
 
 class StatusUpdate(UpdateView):
@@ -41,7 +30,20 @@ class StatusUpdate(UpdateView):
     success_url = reverse_lazy('statuses')
 
 
-class StatusDelete(DeleteView):
+class StatusDelete(SuccessMessageMixin, DeleteView):
     template_name = 'statuses/status_delete.html'
     model = Statuses
     success_url = reverse_lazy('statuses')
+    success_message = 'Статус удален успешно'
+    unsuccess_message = 'Статус нельзя удалить, потому что он используется'
+
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+        except ProtectedError:
+            messages.error(self.request, self.unsuccess_message)
+            return redirect(self.success_url)
+        else:
+            messages.success(self.request, self.success_message)
+            return redirect(self.success_url)
+

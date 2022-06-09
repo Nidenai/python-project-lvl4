@@ -21,3 +21,4 @@ python-dotenv==0.20.0
 soupsieve==2.3.2.post1
 sqlparse==0.4.2
 whitenoise==6.0.0
+rollbar==0.16.2

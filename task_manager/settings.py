@@ -14,6 +14,7 @@ from pathlib import Path
 
 import dj_database_url
 from dotenv import load_dotenv
+import rollbar
 
 load_dotenv()
 
@@ -26,6 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+ROLL_KEY = os.getenv('ROLL_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -69,7 +71,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
+
+ROLLBAR = {
+    'access_token': ROLL_KEY,
+    'environment': 'development' if DEBUG else 'production',
+    'root': BASE_DIR,
+}
+rollbar.init(**ROLLBAR)
 
 ROOT_URLCONF = 'task_manager.urls'
 
@@ -162,3 +172,42 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue'
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            'filters': ['require_debug_true'],
+            "class": "logging.StreamHandler",
+        },
+        'rollbar': {
+            'filters': ['require_debug_false'],
+            'access_token': ROLL_KEY,
+            'environment': 'production',
+            'class': 'rollbar.logger.RollbarHandler'
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", 'rollbar'],
+            "level": "INFO",
+            "propagate": True
+        },
+        "task_manager": {
+            "handlers": ["console", 'rollbar'],
+            "level": "DEBUG",
+            "propagate": True
+        },
+    }
+}
