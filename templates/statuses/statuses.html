@@ -40,7 +40,8 @@
         {{status.status_date}}
     </td>
     <td>
-
+        <a href="{% url 'status_update' status.id %}">Изменить</a>
+        <a href="{% url 'status_delete' status.id %}">Удалить</a>
     </td>
     {% endfor %}
 </table>

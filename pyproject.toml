@@ -8,6 +8,7 @@ authors = ["NIdenai"]
 python = "^3.8"
 Django = "^4.0.4"
 python-dotenv = "^0.20.0"
+flake8 = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 

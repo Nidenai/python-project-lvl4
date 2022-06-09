@@ -35,12 +35,12 @@ class AddLabel(View):
 
 
 class LabelUpdate(UpdateView):
-    template_name = 'labels/label_update.html'
+    template_name = 'labels/status_update.html'
     model = Labels
     fields = ['label_name']
     success_url = reverse_lazy('labels')
 
 class LabelDelete(DeleteView):
-    template_name = 'labels/label_delete.html'
+    template_name = 'labels/status_delete.html'
     model = Labels
     success_url = reverse_lazy('labels')
