@@ -1,7 +1,7 @@
 from django.db import models
 
 class Labels(models.Model):
-    label_name = models.CharField(max_length=50, verbose_name='Имя')
+    label_name = models.CharField(max_length=50, verbose_name='Имя', unique=True)
     label_date = models.DateTimeField(auto_now=True, verbose_name='Дата создания')
 
     class Meta:
