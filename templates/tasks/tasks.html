@@ -12,6 +12,14 @@
     </li>
 </ul>
 {% include 'tasks/add_task.html' %}
+
+<div class="container">
+    <form method="get">
+        {{ filter.form }}
+        <button type="submit" class="btn btn-primary">Фильтровать</button>
+    </form>
+</div>
+
 <ul>
     <table border="1" cellspacing="5" width="90%" summary="Список задач" align="center">
         <tr>
@@ -23,7 +31,7 @@
             <th>Дата создания</th>
             <th></th>
         </tr>
-        {% for task in tasks %}
+        {% for task in filter.qs %}
         <tr>
             <td>
                 {{task.id}}
@@ -49,4 +57,5 @@
         {% endfor %}
     </table>
 </ul>
+
 {% endblock %}

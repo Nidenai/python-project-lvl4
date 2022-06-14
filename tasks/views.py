@@ -6,12 +6,17 @@ from django.views.generic import ListView, UpdateView, DeleteView, FormView
 
 from .forms import *
 from .models import *
+from .filters import *
 
-
-class TaskPage(ListView):
+class TaskPage(LoginRequiredMixin, ListView):
     template_name = 'tasks/tasks.html'
     queryset = Tasks.objects.order_by('id')
     context_object_name = 'tasks'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = TaskFilter(self.request.GET, queryset=self.get_queryset())
+        return context
 
 
 
