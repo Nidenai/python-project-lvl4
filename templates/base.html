@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="sadad">
     <title>{% block title %}{% endblock %}</title>
 
 </head>
@@ -10,11 +12,11 @@
 <div class="container-fluid">
 <ul class="list-group">
     <li class="list-group-item">
-    {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
         Приветствую Вас, {{ user.first_name }} {{ user.last_name }} <a href="{% url 'logout' %}">Выход</a>
-    {% else %}
+        {% else %}
         Приветствую Вас, Гость! <a href="{% url 'login' %}">Войти</a> <a href="{% url 'register' %}">Регистрация</a>
-    {% endif %}
+        {% endif %}
 
     </li>
     <li class="list-group-item">

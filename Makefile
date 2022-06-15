@@ -9,3 +9,6 @@ poetry:
 
 venv:
 	source project/bin/activate
+
+req:
+	pip freeze > requirements.txt
