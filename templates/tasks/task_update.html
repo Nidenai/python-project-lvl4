@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
-{% block title %}Задача{% endblock %}
+{% load i18n %}
+{% block title %}{% translate "Task Update" %}{% endblock %}
 
 
 {% block content %}
 <form method="post">{% csrf_token %}
     {% bootstrap_form form %}
-    <input type="submit" value="Обновить">
+    <input type="submit" value={% translate "Update" %}>
 </form>
 {% endblock %}

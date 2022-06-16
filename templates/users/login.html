@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block title %}Войти{% endblock %}
+{% load i18n %}
+{% block title %}{% translate "Login Page" %}{% endblock %}
 {% load bootstrap4 %}
 {% block content %}
 <h1>Вход</h1>
@@ -13,6 +13,6 @@
 <form action="{% url 'login' %}" method="post">
     {% bootstrap_form form %}
     {% csrf_token %}
-    <button type="submit" class="btn btn-success">Войти</button>
+    <button type="submit" class="btn btn-success">{% translate "Login" %}</button>
     </form>
 {% endblock %}

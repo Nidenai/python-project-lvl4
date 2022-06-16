@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
-
-{% block title %}Статусы{% endblock %}
+{% load i18n %}
+{% block title %}{% translate "Statues" %}{% endblock %}
 
 
 {% block content %}
 <ul>
     <li>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_s">
-            Добавить статус
+            {% translate "Create" %}
         </button>
         {% include 'statuses/add_status.html' %}
     </li>
@@ -16,15 +16,17 @@
 <table border="1" cellspacing="5" width="90%" summary="Список задач" align="center">
     <tr>
         <th>
-            ID
+            {% translate "ID" %}
         </th>
         <th>
-            Наименование
+            {% translate "Name" %}
         </th>
         <th>
-            Дата создания
+            {% translate "Date" %}
         </th>
-        <th></th>
+        <th>
+            {% translate "Actions" %}
+        </th>
         {% for status in statuses %}
     </tr>
     <tr>
@@ -40,8 +42,8 @@
         {{status.status_date}}
     </td>
     <td>
-        <a href="{% url 'status_update' status.id %}">Изменить</a>
-        <a href="{% url 'status_delete' status.id %}">Удалить</a>
+        <a href="{% url 'status_update' status.id %}">{% translate "Update" %}</a>
+        <a href="{% url 'status_delete' status.id %}">{% translate "Deletee" %}</a>
     </td>
     {% endfor %}
 </table>

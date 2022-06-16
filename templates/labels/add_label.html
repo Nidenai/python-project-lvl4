@@ -1,13 +1,13 @@
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
-
+{% load i18n %}
 
 <div class="modal fade" id="add_l" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Добавить метку</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{% translate "Add lales" %}</h5>
 
             </div>
             <div class="modal-body">

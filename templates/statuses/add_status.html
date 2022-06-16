@@ -1,12 +1,12 @@
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
-
+{% load i18n %}
 <div class="modal fade" id="add_s" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Добавить статус</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{% translate "Create Status" %}</h5>
             </div>
             <div class="modal-body">
                 <form action="{% url 'add_s' %}" method="post">
