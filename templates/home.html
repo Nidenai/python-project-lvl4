@@ -2,12 +2,16 @@
 
 {% load i18n %}
 
-{% block title %}{% translate "Main page" %}{% endblock %}
+{% block title %}{% translate "Home" %}{% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <h1>{% translate "Task Manager" %}</h1>
-    <hr>
-
-    </div>
+<div class="jumbotron">
+  <h1 class="display-4">{% translate "Task Manager" %}</h1>
+  <p class="lead">Четвертый проект школы программирования Hexlet в профессии Python-разработчик.</p>
+  <hr class="my-4">
+  <p>Ученик: Дмитрий Князев</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="https://github.com/Nidenai" role="button">Github</a>
+  </p>
+</div>
 {% endblock %}

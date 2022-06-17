@@ -1,64 +1,50 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}{% translate "Tasks" %}{% endblock %}
-
+{% load bootstrap4 %}
 
 {% block content %}
 <ul>
-    <li>
+
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_t">
             {% translate "Create Task" %}
         </button>
-    </li>
+
 </ul>
 {% include 'tasks/add_task.html' %}
 
 <div class="container">
     <form method="get">
-        {{ filter.form }}
+        {% bootstrap_form filter.form layout='horizontal' size='small' %}
         <button type="submit" class="btn btn-primary">{% translate "Filter" %}</button>
     </form>
 </div>
 
-<ul>
-    <table border="1" cellspacing="5" width="90%" summary="Список задач" align="center">
-        <tr>
-            <th>{% translate "ID" %}</th>
-            <th>{% translate "Name" %}</th>
-            <th>{% translate "Status" %}</th>
-            <th>{% translate "Author" %}</th>
-            <th>{% translate "Executor" %}</th>
-            <th>{% translate "Date" %}</th>
-            <th>{% translate "Actions" %}</th>
-        </tr>
-        {% for task in filter.qs %}
-        <tr>
-            <td>
-                {{task.id}}
-            </td>
-            <td>
-                <a href="{% url 'desc' task.id %}">{{task.title}}</a>
-            </td>
-            <td>
-                {{task.status}}
-            </td>
-            <td>
-                {{task.created_user}}
-            </td>
-            <td>
-                {{task.assigned_user}}
-            </td>
-            <td>
-                {{task.task_date}}
-            </td>
-            <td>
-                <a href="{% url 'task_update' task.id %}">{% translate "Update" %}</a>
-                <a href="{% url 'task_delete' task.id %}">{% translate "Delete" %}</a>
-
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-</ul>
-
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">{% translate "ID" %}</th>
+        <th scope="col">{% translate "Name" %}</th>
+        <th scope="col">{% translate "Status" %}</th>
+        <th scope="col">{% translate "Author" %}</th>
+        <th scope="col">{% translate "Executor" %}</th>
+        <th scope="col">{% translate "Date" %}</th>
+        <th scope="col">{% translate "Actions" %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for task in filter.qs %}
+    <tr>
+        <th scope="row">{{task.id}}</th>
+        <td><a href="{% url 'desc' task.id %}">{{task.title}}</a></td>
+        <td>{{task.status}}</td>
+        <td>{{task.created_user}}</td>
+        <td>{{task.assigned_user}}</td>
+        <td>{{task.task_date}}</td>
+        <td><a href="{% url 'task_update' task.id %}">{% translate "Update" %}</a>
+            <a href="{% url 'task_delete' task.id %}">{% translate "Delete" %}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

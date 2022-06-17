@@ -4,8 +4,6 @@
 {% block title %}{% translate "Registration" %}{% endblock %}
 
 {% block content %}
-    <h1>Регистрация</h1>
-    <hr>
 
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}

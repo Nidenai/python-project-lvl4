@@ -4,28 +4,25 @@
 
 
 {% block content %}
-<ul>
-                <table border="1" cellspacing="5" width="50%" summary="Список задач" align="left">
-                    <tr>
-                        <th>{% translate "User ID" %}</th>
-                        <th>{% translate "Name" %}</th>
-                        <th>{% translate "Actions" %}</th>
-                    </tr>
-                    {% for user in users %}
-                    <tr>
-                        <td>
-                           {{user.id}}
-                        </td>
-                        <td>
-                           {{user.first_name}} {{user.last_name}}
-                        </td>
-                        <td>
-                           <a href="{% url 'user_update' user.id %}">{% translate "Update" %}</a>
-                            <a href="{% url 'user_delete' user.id %}">{% translate "Delete" %}</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
-
-        </ul>
+</ul>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">{% translate "ID" %}</th>
+        <th scope="col">{% translate "Name" %}</th>
+        <th scope="col">{% translate "Actions" %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>
+            <a href="{% url 'user_update' user.id %}">{% translate "Update" %}</a>
+            <a href="{% url 'user_delete' user.id %}">{% translate "Delete" %}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
 {% endblock %}

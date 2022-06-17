@@ -4,11 +4,69 @@
 
 
 {% block content %}
-<h2>{{task.title}}</h2>
-<p>{{task.description}}</p>
-<p>{{task.task_date}}</p>
-<p>{{task.label}}</p>
-<p>{{task.status}}</p>
-<p>{{task.created_user}}</p>
-<p>{{task.assigned_user}}</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            Name:
+        </div>
+        <div class="col-sm">
+            {{task.title}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            Description:
+        </div>
+        <div class="col-sm">
+            {{task.description}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            Date:
+        </div>
+        <div class="col-sm">
+            {{task.task_date}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            Labels:
+        </div>
+        <div class="col-sm">
+            {{task.label}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            Status
+        </div>
+        <div class="col-sm">
+            {{task.status}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            Author
+        </div>
+        <div class="col-sm">
+            {{task.created_user}}
+        </div>
+    </div>
+<div class="w-100"></div>
+    <div class="row">
+        <div class="col-sm">
+            Executor
+        </div>
+
+        <div class="col-sm">
+            {{task.assigned_user}}
+        </div>
+    </div>
+</div>
+
 {% endblock %}

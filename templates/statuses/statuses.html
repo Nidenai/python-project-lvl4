@@ -1,51 +1,35 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
 {% block title %}{% translate "Statues" %}{% endblock %}
 
 
 {% block content %}
 <ul>
-    <li>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_s">
-            {% translate "Create" %}
-        </button>
-        {% include 'statuses/add_status.html' %}
-    </li>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_s">
+        {% translate "Create Status" %}
+    </button>
+    {% include 'statuses/add_status.html' %}
+
 </ul>
-
-<table border="1" cellspacing="5" width="90%" summary="Список задач" align="center">
+<table class="table table-striped">
+  <thead>
     <tr>
-        <th>
-            {% translate "ID" %}
-        </th>
-        <th>
-            {% translate "Name" %}
-        </th>
-        <th>
-            {% translate "Date" %}
-        </th>
-        <th>
-            {% translate "Actions" %}
-        </th>
-        {% for status in statuses %}
+      <th scope="col">{% translate "ID" %}</th>
+      <th scope="col">{% translate "Name" %}</th>
+      <th scope="col">{% translate "Date" %}</th>
+      <th scope="col">{% translate "Actions" %}</th>
     </tr>
+  </thead>
+  <tbody>
+  {% for status in statuses %}
     <tr>
-
+      <th scope="row">{{status.id}}</th>
+      <td>{{status.status_name}}</td>
+      <td>{{status.status_date}}</td>
+      <td><a href="{% url 'status_update' status.id %}">{% translate "Update" %}</a>
+        <a href="{% url 'status_delete' status.id %}">{% translate "Delete" %}</a></td>
     </tr>
-    <td>
-        {{status.id}}
-    </td>
-    <td>
-        {{status.status_name}}
-    </td>
-    <td>
-        {{status.status_date}}
-    </td>
-    <td>
-        <a href="{% url 'status_update' status.id %}">{% translate "Update" %}</a>
-        <a href="{% url 'status_delete' status.id %}">{% translate "Deletee" %}</a>
-    </td>
     {% endfor %}
-</table>
-
+  </tbody>
 {% endblock %}

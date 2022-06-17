@@ -12,6 +12,8 @@ python = "^3.8"
 Django = "^4.0.4"
 python-dotenv = "^0.20.0"
 asgiref = "^3.5.2"
+rollbar = "^0.16.3"
+django-bootstrap = "^0.2.4"
 
 [tool.poetry.dev-dependencies]
 

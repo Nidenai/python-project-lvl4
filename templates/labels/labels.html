@@ -4,38 +4,34 @@
 
 
 {% block content %}
-        <ul>
-            <li>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_l">
-                    {% translate "Create label" %}
-                </button>
-                {% include 'labels/add_label.html' %}
-            </li>
-        </ul>
-<table border="1" cellspacing="5" width="90%" summary="Список меток" align="center">
+<ul>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_l">
+            {% translate "Create Label" %}
+        </button>
+        {% include 'labels/add_label.html' %}
+</ul>
+
+</ul>
+<table class="table table-striped">
+    <thead>
     <tr>
-        <th>{% translate "ID" %}</th>
-        <th>{% translate "Name" %}</th>
-        <th>{% translate "Date" %}</th>
-        <th>{% translate "Actions" %}</th>
+        <th scope="col">{% translate "ID" %}</th>
+        <th scope="col">{% translate "Name" %}</th>
+        <th scope="col">{% translate "Date" %}</th>
+        <th scope="col">{% translate "Actions" %}</th>
     </tr>
+    </thead>
+    <tbody>
     {% for label in labels %}
     <tr>
-        <td>
-            {{label.id}}
-        </td>
-        <td>
-            {{label.label_name}}
-        </td>
-        <td>
-            {{label.label_date}}
-        </td>
+        <th scope="row">{{label.id}}</th>
+        <td>{{label.label_name}}</td>
+        <td>{{label.label_date}}</td>
         <td>
             <a href="{% url 'label_update' label.id %}">{% translate "Update" %}</a>
             <a href="{% url 'label_delete' label.id %}">{% translate "Delete" %}</a>
         </td>
     </tr>
     {% endfor %}
-</table>
-
+    </tbody>
 {% endblock %}
