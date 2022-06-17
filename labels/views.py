@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView
 
-from task_manager.mixins import CustomAddForm
+from task_manager.mixins import CustomAddForm, CustomDeleteView
 from .forms import *
 from .models import *
 
@@ -25,7 +25,7 @@ class LabelUpdate(UpdateView):
     fields = ['label_name']
     success_url = reverse_lazy('labels')
 
-class LabelDelete(DeleteView):
+class LabelDelete(CustomDeleteView):
     template_name = 'labels/label_delete.html'
     model = Labels
     success_url = reverse_lazy('labels')

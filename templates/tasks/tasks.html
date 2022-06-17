@@ -14,10 +14,14 @@
 {% include 'tasks/add_task.html' %}
 
 <div class="container">
-    <form method="get">
-        {% bootstrap_form filter.form layout='horizontal' size='small' %}
-        <button type="submit" class="btn btn-primary">{% translate "Filter" %}</button>
-    </form>
+
+
+        <form method="get">
+            {% bootstrap_form filter.form size='small' %}
+            <button type="submit" class="btn btn-primary">{% translate "Filter" %}</button>
+        </form>
+
+
 </div>
 
 <table class="table table-striped">

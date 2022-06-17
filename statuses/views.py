@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView
 
-from task_manager.mixins import CustomAddForm
+from task_manager.mixins import CustomAddForm, CustomDeleteView
 from .forms import *
 from .models import *
 
@@ -30,20 +30,9 @@ class StatusUpdate(UpdateView):
     success_url = reverse_lazy('statuses')
 
 
-class StatusDelete(SuccessMessageMixin, DeleteView):
+class StatusDelete(CustomDeleteView):
     template_name = 'statuses/status_delete.html'
     model = Statuses
     success_url = reverse_lazy('statuses')
     success_message = 'Статус удален успешно'
     unsuccess_message = 'Статус нельзя удалить, потому что он используется'
-
-    def form_valid(self, form):
-        try:
-            self.object.delete()
-        except ProtectedError:
-            messages.error(self.request, self.unsuccess_message)
-            return redirect(self.success_url)
-        else:
-            messages.success(self.request, self.success_message)
-            return redirect(self.success_url)
-

@@ -1,12 +1,14 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView, FormView
 
-from .forms import *
-from .models import *
 from .filters import *
+from .forms import *
+
 
 class TaskPage(LoginRequiredMixin, ListView):
     template_name = 'tasks/tasks.html'
@@ -44,11 +46,13 @@ class TaskDescription(View):
         }
         return render(request, self.template_name, context)
 
-class TaskUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+
+class TaskUpdate(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     template_name = 'tasks/task_update.html'
     model = Tasks
     fields = ['title', 'description', 'label', 'status']
     success_url = reverse_lazy('tasks')
+    success_message = _('Task changed successfully')
 
     def test_func(self):
         task = self.get_object()
