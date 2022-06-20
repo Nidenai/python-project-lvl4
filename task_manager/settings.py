@@ -154,7 +154,7 @@ LANGUAGES = (
     ('en', 'English'),
     ('ru', 'Russian'),
 )
-LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+LOCALE_PATHS = BASE_DIR / 'locale'
 
 TIME_ZONE = 'UTC'
 
@@ -167,7 +167,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
