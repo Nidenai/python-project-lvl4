@@ -116,7 +116,7 @@ prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES = {
     'default': {
         'ENGINE': os.getenv("DATABASE_ENGINE"),
-        'NAME': os.path.join(BASE_DIR, os.getenv("DATABASE_NAME")),
+        'NAME': 'd65rit7spkk8si',
         "USER": os.getenv("DATABASE_USER"),
         "PASSWORD": os.getenv("DATABASE_PASSWORD"),
         "HOST": os.getenv("DATABASE_HOST"),
