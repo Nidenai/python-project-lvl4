@@ -15,6 +15,7 @@ asgiref = "^3.5.2"
 rollbar = "^0.16.3"
 django-bootstrap = "^0.2.4"
 django-filter = "^22.1"
+bootstrap4 = "^0.1.0"
 
 [tool.poetry.dev-dependencies]
 
