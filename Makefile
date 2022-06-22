@@ -8,7 +8,7 @@ poetry:
 	export PATH="$HOME/.local/bin:$PATH"
 
 venv:
-	source project/bin/activate
+	source venv/bin/activate
 
 req:
 	pip freeze > requirements.txt
