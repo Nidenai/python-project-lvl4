@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Login Page" %}{% endblock %}
+{% load bootstrap4 %}
+{% block content %}
+
+{% if form.errors %}
+<p>{{ form.errors.error }}</p>
+{% endif %}
+
+<form action="{% url 'login' %}" method="post">
+    {% bootstrap_form form layout='horizontal' %}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">{% translate "Login" %}</button>
+    </form>
+{% endblock %}

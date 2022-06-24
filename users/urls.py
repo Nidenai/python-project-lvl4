@@ -3,7 +3,6 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
     path('create/', Register.as_view(), name='register'),
     path('/', UserList.as_view(), name='users'),
     path('/(?P<pk>\d+)/$/update', UserUpdate.as_view(), name='user_update'),
