@@ -1,8 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView
 
@@ -60,9 +62,9 @@ class UserDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user.id == self.kwargs['pk']
 
 
-class CustomLogin(LoginView):
+class CustomLogin(SuccessMessageMixin, LoginView):
     template_name = 'users/login.html'
-    pass
+    success_message = _('You are logged in')
 
 class CustomLogout(LogoutView):
     pass
