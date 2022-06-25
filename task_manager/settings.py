@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'statuses',
     'django_filters',
     'bootstrap4',
+    'django-bootstrap4',
 ]
 
 MIDDLEWARE = [
