@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
@@ -30,6 +31,7 @@ class Register(View):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
+            messages.success(_('You are logged in'))
             return redirect('home')
         context = {
             'form': form
@@ -66,5 +68,6 @@ class CustomLogin(SuccessMessageMixin, LoginView):
     template_name = 'users/login.html'
     success_message = _('You are logged in')
 
-class CustomLogout(LogoutView):
-    pass
+
+class CustomLogout(SuccessMessageMixin, LogoutView):
+    success_message = _('You are logged out')

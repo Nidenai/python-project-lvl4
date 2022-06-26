@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 14:50+0000\n"
+"POT-Creation-Date: 2022-06-26 14:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr "Дата"
 msgid "Label"
 msgstr "Метка"
 
-#: labels/models.py:11 templates/base.html:49 templates/base.html:61
+#: labels/models.py:11 templates/base.html:55 templates/base.html:67
 #: templates/labels/labels.html:3
 msgid "Labels"
 msgstr "Метки"
@@ -47,7 +47,7 @@ msgstr "Метки"
 msgid "Status"
 msgstr "Статус"
 
-#: statuses/models.py:10 templates/base.html:52 templates/base.html:65
+#: statuses/models.py:10 templates/base.html:58 templates/base.html:71
 msgid "Statuses"
 msgstr "Статусы"
 
@@ -71,7 +71,7 @@ msgstr "Автор"
 msgid "Task"
 msgstr "Задача"
 
-#: tasks/models.py:22 templates/base.html:46 templates/base.html:57
+#: tasks/models.py:22 templates/base.html:52 templates/base.html:63
 #: templates/tasks/tasks.html:3
 msgid "Tasks"
 msgstr "Задачи"
@@ -80,31 +80,31 @@ msgstr "Задачи"
 msgid "Task changed successfully"
 msgstr "Задача изменена успешно"
 
-#: templates/base.html:19
+#: templates/base.html:25
 msgid "Greetings"
 msgstr "Приветствую"
 
-#: templates/base.html:22
+#: templates/base.html:28
 msgid "Log Out"
 msgstr "Выход"
 
-#: templates/base.html:27
+#: templates/base.html:33
 msgid "Greetings, Guest!"
 msgstr "Приветствую, Гость!"
 
-#: templates/base.html:30
+#: templates/base.html:36
 msgid "Log In"
 msgstr "Вход"
 
-#: templates/base.html:33
+#: templates/base.html:39
 msgid "Registraion"
 msgstr "Регистрация"
 
-#: templates/base.html:39 templates/home.html:5
+#: templates/base.html:45 templates/home.html:5
 msgid "Home"
 msgstr "Главная страница"
 
-#: templates/base.html:42 templates/users/users.html:3
+#: templates/base.html:48 templates/users/users.html:3
 msgid "Users"
 msgstr "Пользователи"
 
@@ -155,13 +155,14 @@ msgid "Actions"
 msgstr "Действия"
 
 #: templates/labels/labels.html:31 templates/statuses/statuses.html:30
-#: templates/tasks/task_update.html:10 templates/tasks/tasks.html:48
-#: templates/users/users.html:22
+#: templates/tasks/task_description.html:10 templates/tasks/task_update.html:10
+#: templates/tasks/tasks.html:48 templates/users/users.html:22
 msgid "Update"
 msgstr "Обновить"
 
 #: templates/labels/labels.html:32 templates/statuses/statuses.html:31
-#: templates/tasks/tasks.html:49 templates/users/users.html:23
+#: templates/tasks/task_description.html:11 templates/tasks/tasks.html:49
+#: templates/users/users.html:23
 msgid "Delete"
 msgstr "Удалить"
 
@@ -216,3 +217,11 @@ msgstr "Удаление"
 #: templates/users/user_update.html:3
 msgid "User Delete"
 msgstr "Удаление пользователя"
+
+#: users/views.py:34 users/views.py:69
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: users/views.py:73
+msgid "You are logged out"
+msgstr "Вы вышли"
