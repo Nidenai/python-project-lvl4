@@ -224,4 +224,4 @@ msgstr "Вы залогинены"
 
 #: users/views.py:73
 msgid "You are logged out"
-msgstr "Вы вышли"
+msgstr "Вы разлогинены"
