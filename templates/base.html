@@ -12,9 +12,10 @@
 </head>
 <body>
 {% if messages  %}
-    <div class="alert alert-warning">
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
         {% for message in messages %}
-            {{message}}</br>
+        {{message}}</br>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         {% endfor %}
     </div>
 {% endif %}

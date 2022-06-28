@@ -22,10 +22,11 @@ class TaskPage(LoginRequiredMixin, ListView):
 
 
 
-class AddTask(LoginRequiredMixin, FormView):
+class AddTask(LoginRequiredMixin, SuccessMessageMixin, FormView):
     template_name = 'tasks/add_task.html'
     form_class = TaskForm
     success_url = '/tasks'
+    success_message = _('Task created succesfully')
 
 
     def form_valid(self, form):
