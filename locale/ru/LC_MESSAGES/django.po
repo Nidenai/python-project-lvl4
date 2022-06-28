@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-26 14:36+0000\n"
+"POT-Creation-Date: 2022-06-28 14:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr "Дата"
 msgid "Label"
 msgstr "Метка"
 
-#: labels/models.py:11 templates/base.html:55 templates/base.html:67
+#: labels/models.py:11 templates/base.html:49 templates/base.html:61
 #: templates/labels/labels.html:3
 msgid "Labels"
 msgstr "Метки"
@@ -47,7 +47,7 @@ msgstr "Метки"
 msgid "Status"
 msgstr "Статус"
 
-#: statuses/models.py:10 templates/base.html:58 templates/base.html:71
+#: statuses/models.py:10 templates/base.html:52 templates/base.html:65
 msgid "Statuses"
 msgstr "Статусы"
 
@@ -71,40 +71,52 @@ msgstr "Автор"
 msgid "Task"
 msgstr "Задача"
 
-#: tasks/models.py:22 templates/base.html:52 templates/base.html:63
+#: tasks/models.py:22 templates/base.html:46 templates/base.html:57
 #: templates/tasks/tasks.html:3
 msgid "Tasks"
 msgstr "Задачи"
 
-#: tasks/views.py:55
+#: tasks/views.py:28
+#, fuzzy
+#| msgid "Task changed successfully"
+msgid "Task created succesfully"
+msgstr "Задача изменена успешно"
+
+#: tasks/views.py:53
 msgid "Task changed successfully"
 msgstr "Задача изменена успешно"
 
-#: templates/base.html:25
+#: tasks/views.py:64
+#, fuzzy
+#| msgid "Task changed successfully"
+msgid "Task deleted successfully"
+msgstr "Задача изменена успешно"
+
+#: templates/base.html:19
 msgid "Greetings"
 msgstr "Приветствую"
 
-#: templates/base.html:28
+#: templates/base.html:22
 msgid "Log Out"
 msgstr "Выход"
 
-#: templates/base.html:33
+#: templates/base.html:27
 msgid "Greetings, Guest!"
 msgstr "Приветствую, Гость!"
 
-#: templates/base.html:36
+#: templates/base.html:30
 msgid "Log In"
 msgstr "Вход"
 
-#: templates/base.html:39
+#: templates/base.html:33
 msgid "Registraion"
 msgstr "Регистрация"
 
-#: templates/base.html:45 templates/home.html:5
+#: templates/base.html:39 templates/home.html:5
 msgid "Home"
 msgstr "Главная страница"
 
-#: templates/base.html:48 templates/users/users.html:3
+#: templates/base.html:42 templates/users/users.html:3
 msgid "Users"
 msgstr "Пользователи"
 
@@ -218,10 +230,22 @@ msgstr "Удаление"
 msgid "User Delete"
 msgstr "Удаление пользователя"
 
-#: users/views.py:34 users/views.py:69
+#: users/views.py:34
+#, fuzzy
+#| msgid "Task changed successfully"
+msgid "User register successful"
+msgstr "Пользователь зарегистрирован"
+
+#: users/views.py:53
+#, fuzzy
+#| msgid "Task changed successfully"
+msgid "User changed successfully"
+msgstr "Задача изменена успешно"
+
+#: users/views.py:70
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: users/views.py:73
+#: users/views.py:75
 msgid "You are logged out"
 msgstr "Вы разлогинены"
