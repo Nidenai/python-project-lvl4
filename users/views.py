@@ -31,7 +31,7 @@ class Register(View):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, _('You are logged in'))
+            messages.success(request, _('User register successful'))
             return redirect('home')
         context = {
             'form': form
@@ -45,17 +45,18 @@ class UserList(ListView):
     context_object_name = 'users'
 
 
-class UserUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class UserUpdate(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, UpdateView):
     template_name = 'users/user_update.html'
     model = User
     fields = ['first_name', 'last_name']
     success_url = reverse_lazy('users')
+    success_message = _('User changed successfully')
 
     def test_func(self):
         return self.request.user.id == self.kwargs['pk']
 
 
-class UserDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class UserDelete(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
     template_name = 'users/user_delete.html'
     model = User
     success_url = reverse_lazy('users')
@@ -70,4 +71,6 @@ class CustomLogin(SuccessMessageMixin, LoginView):
 
 
 class CustomLogout(SuccessMessageMixin, LogoutView):
-    success_message = _('You are logged out')
+    def dispatch(self, request, *args, **kwargs):
+        messages.success(request, _('You are logged out'))
+        return super().dispatch(request, *args, **kwargs)

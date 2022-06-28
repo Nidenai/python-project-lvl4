@@ -11,14 +11,7 @@
     <link rel="stylesheet" href='{% static "blog.css" %}'>
 </head>
 <body>
-{% if messages  %}
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        {% for message in messages %}
-        {{message}}</br>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        {% endfor %}
-    </div>
-{% endif %}
+{% bootstrap_messages %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         {% if user.is_authenticated %}

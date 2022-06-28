@@ -21,20 +21,17 @@ class TaskPage(LoginRequiredMixin, ListView):
         return context
 
 
-
 class AddTask(LoginRequiredMixin, SuccessMessageMixin, FormView):
     template_name = 'tasks/add_task.html'
     form_class = TaskForm
     success_url = '/tasks'
     success_message = _('Task created succesfully')
 
-
     def form_valid(self, form):
         task_form = form.save()
         task_form.created_user = self.request.user
         task_form.save()
         return super().form_valid(form)
-
 
 
 class TaskDescription(View):
@@ -59,10 +56,12 @@ class TaskUpdate(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, U
         task = self.get_object()
         return self.request.user == task.created_user
 
-class TaskDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+
+class TaskDelete(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
     template_name = 'tasks/task_delete.html'
     model = Tasks
     success_url = reverse_lazy('tasks')
+    success_message = _('Task deleted successfully')
 
     def test_func(self):
         task = self.get_object()
