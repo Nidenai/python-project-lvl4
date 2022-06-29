@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView
 
+from task_manager.mixins import HandleNoPermissionMixin
 from users.forms import UserCreationForm
 from users.models import User
 
@@ -45,7 +46,7 @@ class UserList(ListView):
     context_object_name = 'users'
 
 
-class UserUpdate(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, UpdateView):
+class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, UpdateView):
     template_name = 'users/user_update.html'
     model = User
     fields = ['first_name', 'last_name']
@@ -53,7 +54,13 @@ class UserUpdate(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, U
     success_message = _('User changed successfully')
 
     def test_func(self):
-        return self.request.user.id == self.kwargs['pk']
+        user = self.get_object()
+        return self.request.user == user.username
+
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'users'
+        self.restriction_message = _("Is not you!")
+        return super().dispatch(request, *args, **kwargs)
 
 
 class UserDelete(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
@@ -62,7 +69,14 @@ class UserDelete(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, D
     success_url = reverse_lazy('users')
 
     def test_func(self):
-        return self.request.user.id == self.kwargs['pk']
+        user = self.get_object()
+        return self.request.user == user.username
+
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'users'
+        self.restriction_message = _("Is not you!")
+        return super().dispatch(request, *args, **kwargs)
+
 
 
 class CustomLogin(SuccessMessageMixin, LoginView):
