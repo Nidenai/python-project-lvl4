@@ -42,3 +42,10 @@ class CustomDeleteView(SuccessMessageMixin, DeleteView):
         else:
             messages.success(self.request, self.success_message)
             return redirect(self.success_url)
+
+
+class HandleNoPermissionMixin(object):
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.restriction_message)
+        return redirect(self.redirect_url_while_restricted)

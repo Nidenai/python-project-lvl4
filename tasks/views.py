@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView, FormView
 
+from task_manager.mixins import HandleNoPermissionMixin
 from .filters import *
 from .forms import *
 
@@ -45,7 +46,7 @@ class TaskDescription(View):
         return render(request, self.template_name, context)
 
 
-class TaskUpdate(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     template_name = 'tasks/task_update.html'
     model = Tasks
     fields = ['title', 'description', 'label', 'status']
@@ -56,8 +57,13 @@ class TaskUpdate(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, U
         task = self.get_object()
         return self.request.user == task.created_user
 
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'tasks'
+        self.restriction_message = _("Only the author of that task can edit a task!")
+        return super().dispatch(request, *args, **kwargs)
 
-class TaskDelete(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
+
+class TaskDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
     template_name = 'tasks/task_delete.html'
     model = Tasks
     success_url = reverse_lazy('tasks')
@@ -66,3 +72,8 @@ class TaskDelete(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, D
     def test_func(self):
         task = self.get_object()
         return self.request.user == task.created_user
+
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'tasks'
+        self.restriction_message = _("Only the author of that task can delete a task!")
+        return super().dispatch(request, *args, **kwargs)
