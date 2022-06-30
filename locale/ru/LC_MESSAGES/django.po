@@ -168,7 +168,7 @@ msgstr "Действия"
 #: templates/tasks/task_description.html:10 templates/tasks/task_update.html:10
 #: templates/tasks/tasks.html:48 templates/users/users.html:24
 msgid "Update"
-msgstr "Обновить"
+msgstr "Изменить"
 
 #: templates/labels/labels.html:32 templates/statuses/statuses.html:31
 #: templates/tasks/task_description.html:11 templates/tasks/tasks.html:49
