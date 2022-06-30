@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
 {% block title %}{% translate "User Delete" %}{% endblock %}
 
 
 {% block content %}
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update">
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-success">{% translate "Update" %}</button>
 </form>
 {% endblock %}

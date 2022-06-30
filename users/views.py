@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -48,33 +48,28 @@ class UserList(ListView):
 class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, UpdateView):
     template_name = 'users/user_update.html'
     model = User
-    fields = ['first_name', 'last_name']
+    form_class = UserCreationForm
     success_url = reverse_lazy('users')
     success_message = _('User changed successfully')
+    restriction_message = _('NO')
+    redirect_url_while_restricted = 'users'
 
     def test_func(self):
         user = self.get_object()
-        return self.request.user == user.username
-
-    def dispatch(self, request, *args, **kwargs):
-        self.redirect_url_while_restricted = 'users'
-        self.restriction_message = _("Is not you!")
-        return super().dispatch(request, *args, **kwargs)
+        return self.request.user.id == user.id
 
 
-class UserDelete(LoginRequiredMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
+class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
     template_name = 'users/user_delete.html'
     model = User
     success_url = reverse_lazy('users')
+    success_message = _('User changed successfully')
+    restriction_message = _('NO')
+    redirect_url_while_restricted = 'users'
 
     def test_func(self):
         user = self.get_object()
-        return self.request.user == user.username
-
-    def dispatch(self, request, *args, **kwargs):
-        self.redirect_url_while_restricted = 'users'
-        self.restriction_message = _("Is not you!")
-        return super().dispatch(request, *args, **kwargs)
+        return self.request.user.id == user.id
 
 
 
