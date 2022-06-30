@@ -9,6 +9,7 @@
     <thead>
     <tr>
         <th scope="col">{% translate "ID" %}</th>
+        <th scope="col">{% translate "Username" %}</th>
         <th scope="col">{% translate "Name" %}</th>
         <th scope="col">{% translate "Actions" %}</th>
     </tr>
@@ -17,6 +18,7 @@
     {% for user in users %}
     <tr>
         <th scope="row">{{user.id}}</th>
+        <td>{{user.username}}</td>
         <td>{{user.first_name}} {{user.last_name}}</td>
         <td>
             <a href="{% url 'user_update' user.id %}">{% translate "Update" %}</a>
