@@ -46,21 +46,13 @@ class TaskDescription(View):
         return render(request, self.template_name, context)
 
 
-class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UpdateView):
     template_name = 'tasks/task_update.html'
     model = Tasks
     fields = ['title', 'description', 'label', 'status']
     success_url = reverse_lazy('tasks')
     success_message = _('Task changed successfully')
 
-    def test_func(self):
-        task = self.get_object()
-        return self.request.user == task.created_user
-
-    def dispatch(self, request, *args, **kwargs):
-        self.redirect_url_while_restricted = 'tasks'
-        self.restriction_message = _("Only the author of that task can edit a task!")
-        return super().dispatch(request, *args, **kwargs)
 
 
 class TaskDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):

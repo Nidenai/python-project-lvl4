@@ -8,6 +8,6 @@
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
     {% bootstrap_form form %}
-    {% buttons submit='Submit' %}{% endbuttons %}
+    <button type="submit" class="btn btn-success">{% translate "Register" %}</button>
     </form>
 {% endblock %}

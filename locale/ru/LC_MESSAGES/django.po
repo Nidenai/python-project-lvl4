@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-28 14:08+0000\n"
+"POT-Creation-Date: 2022-06-30 11:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: labels/models.py:6 statuses/models.py:5 tasks/models.py:10
 #: templates/labels/labels.html:19 templates/statuses/statuses.html:19
-#: templates/tasks/tasks.html:31 templates/users/users.html:12
+#: templates/tasks/tasks.html:31 templates/users/users.html:13
 msgid "Name"
 msgstr "Имя"
 
@@ -76,21 +76,21 @@ msgstr "Задача"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: tasks/views.py:28
-#, fuzzy
-#| msgid "Task changed successfully"
+#: tasks/views.py:29
 msgid "Task created succesfully"
-msgstr "Задача изменена успешно"
+msgstr "Задача создана успешно"
 
-#: tasks/views.py:53
+#: tasks/views.py:54
 msgid "Task changed successfully"
-msgstr "Задача изменена успешно"
+msgstr "Задача успешно изменена"
 
-#: tasks/views.py:64
-#, fuzzy
-#| msgid "Task changed successfully"
+#: tasks/views.py:62
 msgid "Task deleted successfully"
-msgstr "Задача изменена успешно"
+msgstr "Задача успешно удалена"
+
+#: tasks/views.py:70
+msgid "Only the author of that task can delete a task!"
+msgstr "Задачу может удалить только её автор"
 
 #: templates/base.html:19
 msgid "Greetings"
@@ -143,8 +143,6 @@ msgstr "Закрыть"
 
 #: templates/labels/add_label.html:18 templates/statuses/add_status.html:16
 #: templates/tasks/add_task.html:16
-#, fuzzy
-#| msgid "Create Task"
 msgid "Create"
 msgstr "Создать"
 
@@ -162,19 +160,19 @@ msgid "ID"
 msgstr "ID"
 
 #: templates/labels/labels.html:21 templates/statuses/statuses.html:21
-#: templates/tasks/tasks.html:36 templates/users/users.html:13
+#: templates/tasks/tasks.html:36 templates/users/users.html:14
 msgid "Actions"
 msgstr "Действия"
 
 #: templates/labels/labels.html:31 templates/statuses/statuses.html:30
 #: templates/tasks/task_description.html:10 templates/tasks/task_update.html:10
-#: templates/tasks/tasks.html:48 templates/users/users.html:22
+#: templates/tasks/tasks.html:48 templates/users/users.html:24
 msgid "Update"
 msgstr "Обновить"
 
 #: templates/labels/labels.html:32 templates/statuses/statuses.html:31
 #: templates/tasks/task_description.html:11 templates/tasks/tasks.html:49
-#: templates/users/users.html:23
+#: templates/users/users.html:25
 msgid "Delete"
 msgstr "Удалить"
 
@@ -222,6 +220,10 @@ msgstr "Фильтр"
 msgid "Registration"
 msgstr "Регистрация"
 
+#: templates/users/register.html:11
+msgid "Register"
+msgstr "Зарегистрировать"
+
 #: templates/users/user_delete.html:3
 msgid "Deleting"
 msgstr "Удаление"
@@ -230,22 +232,26 @@ msgstr "Удаление"
 msgid "User Delete"
 msgstr "Удаление пользователя"
 
-#: users/views.py:34
-#, fuzzy
-#| msgid "Task changed successfully"
+#: templates/users/users.html:12
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: users/views.py:35
 msgid "User register successful"
 msgstr "Пользователь зарегистрирован"
 
-#: users/views.py:53
-#, fuzzy
-#| msgid "Task changed successfully"
+#: users/views.py:54
 msgid "User changed successfully"
-msgstr "Задача изменена успешно"
+msgstr "Пользователь успешно изменён"
 
-#: users/views.py:70
+#: users/views.py:62 users/views.py:77
+msgid "Is not you!"
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: users/views.py:84
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: users/views.py:75
+#: users/views.py:89
 msgid "You are logged out"
 msgstr "Вы разлогинены"
