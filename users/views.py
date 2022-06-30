@@ -31,9 +31,8 @@ class Register(View):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
-            login(request, user)
             messages.success(request, _('User register successful'))
-            return redirect('home')
+            return redirect('login')
         context = {
             'form': form
         }
