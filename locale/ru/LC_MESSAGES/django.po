@@ -238,7 +238,7 @@ msgstr "Имя пользователя"
 
 #: users/views.py:35
 msgid "User register successful"
-msgstr "Пользователь зарегистрирован"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: users/views.py:54
 msgid "User changed successfully"
