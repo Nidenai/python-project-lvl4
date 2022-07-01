@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -28,8 +27,6 @@ class Register(View):
 
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
             messages.success(request, _('User register successful'))
             return redirect('login')
         context = {
@@ -47,7 +44,7 @@ class UserList(ListView):
 class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, UpdateView):
     template_name = 'users/user_update.html'
     model = User
-    form_class = UserCreationForm
+    fields = ['username', 'first_name', 'last_name']
     success_url = reverse_lazy('users')
     success_message = _('User changed successfully')
     restriction_message = _('NO')
