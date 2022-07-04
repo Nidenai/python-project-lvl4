@@ -1,11 +1,9 @@
-from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.db.models import ProtectedError
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import ListView, UpdateView, FormView
 
-from task_manager.mixins import CustomAddForm, CustomDeleteView
+from task_manager.mixins import CustomDeleteView
 from .forms import *
 from .models import *
 
@@ -16,11 +14,11 @@ class StatusPage(ListView):
     context_object_name = 'statuses'
 
 
-class AddStatus(CustomAddForm):
+class AddStatus(SuccessMessageMixin, FormView):
     template_name = 'statuses/add_status.html'
-    form_to_post = StatusForm
-    model = Statuses
-    redirect_to = 'statuses'
+    form_class = StatusForm
+    success_url = '/statuses'
+    success_message = _('Status created succesfully')
 
 
 class StatusUpdate(UpdateView):

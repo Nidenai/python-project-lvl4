@@ -1,23 +1,12 @@
+{% extends 'base.html' %}
 {% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
 {% load i18n %}
-<div class="modal fade" id="add_s" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{% translate "Create Status" %}</h5>
-            </div>
-            <div class="modal-body">
-                <form action="{% url 'add_s' %}" method="post">
-                    {% bootstrap_form add_s %}
-                    {% csrf_token %}
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate "Close" %}</button>
-                    <button type="submit" class="btn btn-primary">{% translate "Create" %}</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
+{% block title %}{% translate "Create Status" %}{% endblock %}
+
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" value="{% translate 'Create' %}">
+</form>
+{% endblock %}
