@@ -22,7 +22,6 @@ from .views import HomepageView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomepageView.as_view(), name='home'),
-    path('/', HomepageView.as_view(), name='home'),
     path('login/', CustomLogin.as_view(), name='login'),
     path('logout/', CustomLogout.as_view(), name='logout'),
     path('users/', include('users.urls')),
