@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-04 12:02+0000\n"
+"POT-Creation-Date: 2022-07-04 16:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: labels/models.py:6 statuses/models.py:5 tasks/models.py:10
-#: templates/labels/labels.html:19 templates/statuses/statuses.html:19
+#: templates/labels/labels.html:19 templates/statuses/statuses.html:15
 #: templates/tasks/tasks.html:31 templates/users/users.html:13
 msgid "Name"
 msgstr "Имя"
@@ -49,6 +49,11 @@ msgstr "Статус"
 #: statuses/models.py:10 templates/base.html:52 templates/base.html:65
 msgid "Statuses"
 msgstr "Статусы"
+
+#: statuses/views.py:21
+#, fuzzy
+msgid "Status created succesfully"
+msgstr "Статус успешно создан"
 
 #: tasks/filters.py:19 tasks/models.py:18 templates/tasks/tasks.html:34
 msgid "Executor"
@@ -135,12 +140,11 @@ msgstr "Студент: Дмитрий Князев"
 msgid "Add lales"
 msgstr "Добавить метку"
 
-#: templates/labels/add_label.html:17 templates/statuses/add_status.html:15
-#: templates/tasks/add_task.html:15
+#: templates/labels/add_label.html:17 templates/tasks/add_task.html:15
 msgid "Close"
 msgstr "Закрыть"
 
-#: templates/labels/add_label.html:18 templates/statuses/add_status.html:16
+#: templates/labels/add_label.html:18 templates/statuses/add_status.html:10
 #: templates/tasks/add_task.html:16
 msgid "Create"
 msgstr "Создать"
@@ -159,24 +163,24 @@ msgstr "Да, удалить"
 msgid "Create Label"
 msgstr "Добавить метку"
 
-#: templates/labels/labels.html:18 templates/statuses/statuses.html:18
+#: templates/labels/labels.html:18 templates/statuses/statuses.html:14
 #: templates/tasks/tasks.html:30 templates/users/users.html:11
 msgid "ID"
 msgstr "ID"
 
-#: templates/labels/labels.html:21 templates/statuses/statuses.html:21
+#: templates/labels/labels.html:21 templates/statuses/statuses.html:17
 #: templates/tasks/tasks.html:36 templates/users/users.html:14
 msgid "Actions"
 msgstr "Действия"
 
-#: templates/labels/labels.html:31 templates/statuses/statuses.html:30
+#: templates/labels/labels.html:31 templates/statuses/statuses.html:26
 #: templates/tasks/task_description.html:10 templates/tasks/task_update.html:10
 #: templates/tasks/tasks.html:48 templates/users/user_update.html:11
 #: templates/users/users.html:24
 msgid "Update"
 msgstr "Изменить"
 
-#: templates/labels/labels.html:32 templates/statuses/statuses.html:31
+#: templates/labels/labels.html:32 templates/statuses/statuses.html:27
 #: templates/tasks/task_description.html:11 templates/tasks/tasks.html:49
 #: templates/users/users.html:25
 msgid "Delete"
@@ -190,9 +194,9 @@ msgstr "Страница входа"
 msgid "Login"
 msgstr "Войти"
 
-#: templates/statuses/add_status.html:9 templates/statuses/statuses.html:10
+#: templates/statuses/add_status.html:4 templates/statuses/statuses.html:9
 msgid "Create Status"
-msgstr "Добавить статус"
+msgstr "Создать статус"
 
 #: templates/statuses/status_delete.html:4
 msgid "Status Delete"
@@ -206,7 +210,7 @@ msgstr "Обновление статуса"
 msgid "Statues"
 msgstr "Статусы"
 
-#: templates/statuses/statuses.html:20
+#: templates/statuses/statuses.html:16
 msgid "Created date"
 msgstr "Дата создания"
 
