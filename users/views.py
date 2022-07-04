@@ -59,7 +59,7 @@ class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
     template_name = 'users/user_delete.html'
     model = User
     success_url = reverse_lazy('users')
-    success_message = _('User changed successfully')
+    success_message = _('User deleted successfully')
     restriction_message = _('NO')
     redirect_url_while_restricted = 'users'
 
