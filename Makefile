@@ -35,3 +35,10 @@ all:
 	make build
 	make publish
 	make package-install
+
+
+local_pre:
+	python3 manage.py makemessages -l ru -i venv
+
+local_launch:
+	python3 manage.py compilemessages

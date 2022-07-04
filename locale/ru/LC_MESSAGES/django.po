@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-30 11:56+0000\n"
+"POT-Creation-Date: 2022-07-04 11:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,6 +150,12 @@ msgstr "Создать"
 msgid "Delete label"
 msgstr "Удалить метку"
 
+#: templates/labels/label_delete.html:10
+#: templates/statuses/status_delete.html:12 templates/tasks/task_delete.html:10
+#: templates/users/user_delete.html:10
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
 #: templates/labels/labels.html:9
 msgid "Create Label"
 msgstr "Добавить метку"
@@ -166,7 +172,8 @@ msgstr "Действия"
 
 #: templates/labels/labels.html:31 templates/statuses/statuses.html:30
 #: templates/tasks/task_description.html:10 templates/tasks/task_update.html:10
-#: templates/tasks/tasks.html:48 templates/users/users.html:24
+#: templates/tasks/tasks.html:48 templates/users/user_update.html:11
+#: templates/users/users.html:24
 msgid "Update"
 msgstr "Изменить"
 
@@ -225,33 +232,39 @@ msgid "Register"
 msgstr "Зарегистрировать"
 
 #: templates/users/user_delete.html:3
-msgid "Deleting"
-msgstr "Удаление"
-
-#: templates/users/user_update.html:3
 msgid "User Delete"
 msgstr "Удаление пользователя"
+
+#: templates/users/user_update.html:4
+msgid "User Update"
+msgstr "Обновить задачу"
 
 #: templates/users/users.html:12
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: users/views.py:35
+#: users/views.py:30
 msgid "User register successful"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:54
+#: users/views.py:49 users/views.py:62
 msgid "User changed successfully"
 msgstr "Пользователь успешно изменён"
 
-#: users/views.py:62 users/views.py:77
-msgid "Is not you!"
-msgstr "У вас нет прав для изменения другого пользователя."
+#: users/views.py:50 users/views.py:63
+msgid "NO"
+msgstr ""
 
-#: users/views.py:84
+#: users/views.py:74
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: users/views.py:89
+#: users/views.py:79
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Deleting"
+#~ msgstr "Удаление"
+
+#~ msgid "Is not you!"
+#~ msgstr "У вас нет прав для изменения другого пользователя."
