@@ -56,14 +56,12 @@ class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
         return self.request.user.id == user.id
 
     def form_valid(self, form):
-        # save the new user first
         form.save()
-        # get the username and password
         username = self.request.POST['username']
         password = self.request.POST['password1']
-        # authenticate user then login
         user = authenticate(username=username, password=password)
         login(self.request, user)
+        messages.success(self.request, _('User changed successfully'))
         return redirect('users')
 
 
