@@ -1,7 +1,8 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import ListView, UpdateView, FormView
+from django.views.generic import ListView, UpdateView, FormView, CreateView
 
 from task_manager.mixins import CustomDeleteView
 from .forms import *
@@ -14,7 +15,7 @@ class StatusPage(ListView):
     context_object_name = 'statuses'
 
 
-class AddStatus(SuccessMessageMixin, FormView):
+class AddStatus(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'statuses/add_status.html'
     form_class = StatusForm
     success_url = '/statuses'

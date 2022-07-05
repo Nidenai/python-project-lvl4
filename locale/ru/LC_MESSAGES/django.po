@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-04 17:00+0000\n"
+"POT-Creation-Date: 2022-07-05 14:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,8 +50,7 @@ msgstr "Статус"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: statuses/views.py:21
-#, fuzzy
+#: statuses/views.py:22
 msgid "Status created succesfully"
 msgstr "Статус успешно создан"
 
@@ -250,27 +249,27 @@ msgstr "Обновить задачу"
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: users/views.py:30
+#: users/views.py:31
 msgid "User register successful"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:49
+#: users/views.py:50 users/views.py:64
 msgid "User changed successfully"
 msgstr "Пользователь успешно изменён"
 
-#: users/views.py:50 users/views.py:63
+#: users/views.py:51 users/views.py:73
 msgid "NO"
 msgstr ""
 
-#: users/views.py:62
+#: users/views.py:72
 msgid "User deleted successfully"
 msgstr "Пользователь успешно удалён"
 
-#: users/views.py:74
+#: users/views.py:84
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: users/views.py:79
+#: users/views.py:89
 msgid "You are logged out"
 msgstr "Вы разлогинены"
 
