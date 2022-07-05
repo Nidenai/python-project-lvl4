@@ -18,7 +18,7 @@ class StatusPage(ListView):
 class AddStatus(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'statuses/add_status.html'
     form_class = StatusForm
-    success_url = '/statuses'
+    success_url = reverse_lazy('statuses')
     success_message = _('Status created succesfully')
 
 
