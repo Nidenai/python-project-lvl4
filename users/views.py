@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -45,14 +46,25 @@ class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
     template_name = 'users/user_update.html'
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('login')
     success_message = _('User changed successfully')
     restriction_message = _('NO')
-    redirect_url_while_restricted = 'users'
+    redirect_url_while_restricted = reverse_lazy('users')
 
     def test_func(self):
         user = self.get_object()
         return self.request.user.id == user.id
+
+    def form_valid(self, form):
+        # save the new user first
+        form.save()
+        # get the username and password
+        username = self.request.POST['username']
+        password = self.request.POST['password1']
+        # authenticate user then login
+        user = authenticate(username=username, password=password)
+        login(self.request, user)
+        return redirect('users')
 
 
 class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
