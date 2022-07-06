@@ -7,33 +7,19 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
-from django.views.generic import ListView, UpdateView, DeleteView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 from task_manager.mixins import HandleNoPermissionMixin
 from users.forms import UserCreationForm
 from users.models import User
 
 
-class Register(View):
+class Register(SuccessMessageMixin, CreateView):
     template_name = 'users/register.html'
-
-    def get(self, request):
-        context = {
-            'form': UserCreationForm()
-        }
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-        form = UserCreationForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('User register successful'))
-            return redirect('login')
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
+    model = User
+    success_url = reverse_lazy('login')
+    form_class = UserCreationForm
+    success_message = _('User register successful')
 
 
 class UserList(ListView):

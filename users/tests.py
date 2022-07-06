@@ -1,34 +1,49 @@
 from django.test import TestCase
 from django.urls import reverse
+from loguru import logger
 
-from .models import *
+from .models import User
 
 
-class TestUsersCase(TestCase):
+class BaseTestCase(TestCase):
+    def setUp(self):
+        self.register_user_url = reverse('register')
+        self.login_page = reverse('login')
+        self.user_list = reverse('users')
+        self.correct_user_register = {
+            'username': 'testusername',
+            'first_name': 'testfirstname',
+            'last_name': 'testlastname',
+            'password': 'Test1234',
+            'password2': 'Test1234'
+        }
+        return super().setUp()
 
     @classmethod
     def setUpTestData(cls):
-        user = User.objects.create_user('test_user', email=None, password='QazWsx741', first_name='test',
-                                        last_name='user')
-        user.save()
+        user1 = User.objects.create_user('defaultusername1', email=None, password='Test1234',
+                                        first_name='defaultfirstname1',
+                                        last_name='defaultlastname1')
+        user1.save()
+        user2 = User.objects.create_user('defaultusername2', email=None, password='Test1234',
+                                         first_name='defaultfirstname2',
+                                         last_name='defaultlastname2')
+        user2.save()
+
+class UserTestCase(BaseTestCase):
+    def test_register_user(self):
+        response = self.client.post(self.register_user_url, self.correct_user_register,
+                                    format='text/html')
+        # self.assertRedirects(response, self.register_user_url)
+
+    def test_login(self):
+        response = self.client.login(username='defaultusername1', password='Test1234')
+        self.assertEqual(response, True)
+        response = self.client.login(username='defaultusern2ame1', password='Test1234')
+        self.assertEqual(response, False)
 
     def test_user_list(self):
-        response = self.client.get(reverse('users'))
+        response = self.client.get(self.user_list)
+        response_tasks = list(response.context_data['users'])
+        logger.debug(response_tasks)
         self.assertEqual(response.status_code, 200)
-        response_tasks = list(response.context['users'])
-        self.assertQuerysetEqual(response_tasks, ['<User: test user>'])
-
-    def test_registration_user(self):
-        user_for_test = {
-            'first_name': 'MyName',
-            'last_name': 'MyLastName',
-            'username': 'Username',
-            'password1': 'Qwerty789',
-            'password2': 'Qwerty789'
-        }
-        register_url = reverse('register')
-        response = self.client.post(register_url, user_for_test, follow=True)
-        response_tasks = list(self.client.get(reverse('users')).context['users'])
-        print(response_tasks)
-        #self.assertRedirects(response, '/login/', status_code=302, target_status_code=200, fetch_redirect_response=True)
-        #self.assertContains(response, 'Пользователь успешно зарегистрирован')
