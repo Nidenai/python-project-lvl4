@@ -1,7 +1,8 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import DeleteView
@@ -51,3 +52,11 @@ class HandleNoPermissionMixin(object):
     def handle_no_permission(self):
         messages.error(self.request, self.restriction_message)
         return redirect(self.redirect_url_while_restricted)
+
+
+class CustomLoginRequiredMixin(HandleNoPermissionMixin, LoginRequiredMixin):
+
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'login'
+        self.restriction_message = _('You are not authorized! Please sign in.')
+        return super().dispatch(request, *args, **kwargs)
