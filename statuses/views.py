@@ -10,7 +10,7 @@ from .models import *
 
 class StatusPage(CustomLoginRequiredMixin, ListView):
     template_name = 'statuses/list.html'
-    model = Statuses
+    model = Status
     context_object_name = 'statuses'
 
 
@@ -23,7 +23,7 @@ class AddStatus(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class StatusUpdate(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = 'update.html'
-    model = Statuses
+    model = Status
     fields = ['status_name']
     success_url = reverse_lazy('statuses:list')
     success_message = _('Status update succesfully')
@@ -31,7 +31,7 @@ class StatusUpdate(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class StatusDelete(CustomLoginRequiredMixin, CustomDeleteView):
     template_name = 'delete.html'
-    model = Statuses
+    model = Status
     success_url = reverse_lazy('statuses:list')
     success_message = _('Status deleted succesfully')
     unsuccess_message = _('Status now using')

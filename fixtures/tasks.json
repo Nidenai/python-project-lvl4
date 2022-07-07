@@ -1,0 +1,66 @@
+[
+{
+  "model": "tasks.tasks",
+  "pk": 1,
+  "fields": {
+    "title": "Пофиксить баги во вьюхах",
+    "description": "Вьюха users выдает ошибку на регистрации",
+    "task_date": "2022-07-07T12:24:55.682Z",
+    "status": 2,
+    "created_user": 3,
+    "assigned_user": 1,
+    "label": [
+      1
+    ]
+  }
+},
+{
+  "model": "tasks.tasks",
+  "pk": 2,
+  "fields": {
+    "title": "Добавить функцию красивой загрузки страницы",
+    "description": "Необходимо что-то вроде полосы загрузки при логине",
+    "task_date": "2022-07-07T12:25:44.767Z",
+    "status": 1,
+    "created_user": 3,
+    "assigned_user": 2,
+    "label": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tasks.tasks",
+  "pk": 3,
+  "fields": {
+    "title": "Летний корпоратив",
+    "description": "Срочно надо обсудить",
+    "task_date": "2022-07-07T12:26:08.037Z",
+    "status": 1,
+    "created_user": 3,
+    "assigned_user": 3,
+    "label": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "tasks.tasks",
+  "pk": 4,
+  "fields": {
+    "title": "Планирование обучения по бэку",
+    "description": "Необходимо время для обучения",
+    "task_date": "2022-07-07T12:27:20.855Z",
+    "status": 1,
+    "created_user": 2,
+    "assigned_user": 3,
+    "label": [
+      5
+    ]
+  }
+}
+]

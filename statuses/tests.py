@@ -3,7 +3,7 @@ from django.urls import reverse
 from loguru import logger
 
 from users.models import User
-from statuses.models import Statuses
+from statuses.models import Status
 
 
 class BaseTestCase(TestCase):
@@ -33,5 +33,5 @@ class StatusTestCase(BaseTestCase):
         response = self.client.post(reverse('statuses:create'), status, follow=True)
         self.assertRedirects(response, '/statuses/')
         self.assertContains(response, 'Статус успешно создан')
-        created_status = Statuses.objects.get(status_name=status['status_name'])
+        created_status = Status.objects.get(status_name=status['status_name'])
         self.assertEquals(created_status.status_name, 'Test_Status')

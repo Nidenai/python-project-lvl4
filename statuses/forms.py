@@ -4,5 +4,5 @@ from .models import *
 
 class StatusForm(forms.ModelForm):
     class Meta:
-        model = Statuses
+        model = Status
         fields = ('id', 'status_name')

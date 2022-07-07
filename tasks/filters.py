@@ -4,13 +4,13 @@ from django.db.models.functions import Concat
 from django_filters import FilterSet, BooleanFilter, ChoiceFilter
 from django.utils.translation import gettext as _
 from labels.models import Labels
-from statuses.models import Statuses
+from statuses.models import Status
 from tasks.models import Tasks
 from users.models import User
 
 
 class TaskFilter(FilterSet):
-    statuses = Statuses.objects.values_list('id', 'status_name', named=True).all()
+    statuses = Status.objects.values_list('id', 'status_name', named=True).all()
     labels = Labels.objects.values_list('id', 'label_name', named=True).all()
     users = User.objects.values_list(
         'id', Concat('first_name', Value(' '), 'last_name'), named=True
