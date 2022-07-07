@@ -11,7 +11,7 @@ from .models import *
 
 class StatusPage(ListView):
     template_name = 'statuses/statuses.html'
-    queryset = Statuses.objects.order_by('id')
+    model = Statuses
     context_object_name = 'statuses'
 
 
