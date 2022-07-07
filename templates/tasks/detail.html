@@ -7,8 +7,8 @@
 
 <div class="container">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-primary btn-lg" href="{% url 'task_update' task.id %}" role="button">{% translate "Update" %}</a>
-        <a class="btn btn-primary btn-lg" href="{% url 'task_delete' task.id %}" role="button">{% translate "Delete" %}</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'tasks:update' task.id %}" role="button">{% translate "Update" %}</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'tasks:delete' task.id %}" role="button">{% translate "Delete" %}</a>
     </div>
     <div class="row">
         <div class="col-sm">

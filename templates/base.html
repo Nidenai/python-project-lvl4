@@ -43,21 +43,21 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'tasks' %}">{% translate "Tasks" %}</a>
+                    <a class="nav-link" href="{% url 'tasks:list' %}">{% translate "Tasks" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'labels' %}">{% translate "Labels" %}</a>
+                    <a class="nav-link" href="{% url 'labels:list' %}">{% translate "Labels" %}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'statuses:list' %}">{% translate "Statuses" %}</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="{% url 'tasks' %}" tabindex="-1" aria-disabled="true">
+                    <a class="nav-link disabled" href="{% url 'tasks:list' %}" tabindex="-1" aria-disabled="true">
                         {% translate "Tasks" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="{% url 'labels' %}" tabindex="-1" aria-disabled="true">
+                    <a class="nav-link disabled" href="{% url 'labels:list' %}" tabindex="-1" aria-disabled="true">
                         {% translate "Labels" %}</a>
                 </li>
                 <li class="nav-item">

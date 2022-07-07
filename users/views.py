@@ -24,12 +24,12 @@ class Register(SuccessMessageMixin, CreateView):
 
 class UserList(ListView):
     queryset = User.objects.order_by('id')
-    template_name = 'users/users.html'
+    template_name = 'users/list.html'
     context_object_name = 'users'
 
 
 class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, UpdateView):
-    template_name = 'users/user_update.html'
+    template_name = 'update.html'
     model = User
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
@@ -52,7 +52,7 @@ class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
 
 
 class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
-    template_name = 'users/user_delete.html'
+    template_name = 'delete.html'
     model = User
     success_url = reverse_lazy('users')
     success_message = _('User deleted successfully')

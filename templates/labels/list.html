@@ -5,10 +5,7 @@
 
 {% block content %}
 <ul>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_l">
-            {% translate "Create Label" %}
-        </button>
-        {% include 'labels/add_label.html' %}
+    <a href="{% url 'labels:create' %}">{% translate "Create label" %}</a>
 </ul>
 
 </ul>
@@ -28,8 +25,8 @@
         <td>{{label.label_name}}</td>
         <td>{{label.label_date}}</td>
         <td>
-            <a href="{% url 'label_update' label.id %}">{% translate "Update" %}</a>
-            <a href="{% url 'label_delete' label.id %}">{% translate "Delete" %}</a>
+            <a href="{% url 'labels:update' label.id %}">{% translate "Update" %}</a>
+            <a href="{% url 'labels:delete' label.id %}">{% translate "Delete" %}</a>
         </td>
     </tr>
     {% endfor %}

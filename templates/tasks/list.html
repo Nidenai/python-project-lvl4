@@ -5,13 +5,9 @@
 
 {% block content %}
 <ul>
-
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_t">
-            {% translate "Create Task" %}
-        </button>
-
+    <a href="{% url 'tasks:create' %}">{% translate "Create Task" %}</a>
 </ul>
-{% include 'tasks/add_task.html' %}
+
 
 <div class="container">
 
@@ -40,13 +36,13 @@
     {% for task in filter.qs %}
     <tr>
         <th scope="row">{{task.id}}</th>
-        <td><a href="{% url 'desc' task.id %}">{{task.title}}</a></td>
+        <td><a href="{% url 'tasks:detail' task.id %}">{{task.title}}</a></td>
         <td>{{task.status}}</td>
         <td>{{task.created_user}}</td>
         <td>{{task.assigned_user}}</td>
         <td>{{task.task_date}}</td>
-        <td><a href="{% url 'task_update' task.id %}">{% translate "Update" %}</a>
-            <a href="{% url 'task_delete' task.id %}">{% translate "Delete" %}</a></td>
+        <td><a href="{% url 'tasks:update' task.id %}">{% translate "Update" %}</a>
+            <a href="{% url 'tasks:delete' task.id %}">{% translate "Delete" %}</a></td>
     </tr>
     {% endfor %}
     </tbody>

@@ -2,9 +2,10 @@ from django.urls import path
 
 from .views import *
 
+app_name = 'labels'
 urlpatterns = [
-    path('', LabelPage.as_view(), name='labels'),
-    path('create/', AddLabel.as_view(), name='add_l'),
-    path('<int:pk>/update/', LabelUpdate.as_view(), name='label_update'),
-    path('<int:pk>/delete/', LabelDelete.as_view(), name='label_delete')
+    path('', LabelPage.as_view(), name='list'),
+    path('create/', AddLabel.as_view(), name='create'),
+    path('<int:pk>/update/', LabelUpdate.as_view(), name='update'),
+    path('<int:pk>/delete/', LabelDelete.as_view(), name='delete')
 ]

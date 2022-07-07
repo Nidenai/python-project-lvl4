@@ -12,7 +12,7 @@ from .forms import *
 
 
 class TaskPage(LoginRequiredMixin, ListView):
-    template_name = 'tasks/tasks.html'
+    template_name = 'tasks/list.html'
     queryset = Tasks.objects.order_by('id')
     context_object_name = 'tasks'
 
@@ -23,7 +23,7 @@ class TaskPage(LoginRequiredMixin, ListView):
 
 
 class AddTask(LoginRequiredMixin, SuccessMessageMixin, FormView):
-    template_name = 'tasks/add_task.html'
+    template_name = 'create.html'
     form_class = TaskForm
     success_url = '/tasks'
     success_message = _('Task created succesfully')
@@ -36,7 +36,7 @@ class AddTask(LoginRequiredMixin, SuccessMessageMixin, FormView):
 
 
 class TaskDescription(View):
-    template_name = 'tasks/task_description.html'
+    template_name = 'tasks/detail.html'
 
     def get(self, request, task_id):
         task = Tasks.objects.get(pk=task_id)
@@ -47,7 +47,7 @@ class TaskDescription(View):
 
 
 class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UpdateView):
-    template_name = 'tasks/task_update.html'
+    template_name = 'update.html'
     model = Tasks
     fields = ['title', 'description', 'label', 'status']
     success_url = reverse_lazy('tasks')
@@ -56,7 +56,7 @@ class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
 
 
 class TaskDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
-    template_name = 'tasks/task_delete.html'
+    template_name = 'delete.html'
     model = Tasks
     success_url = reverse_lazy('tasks')
     success_message = _('Task deleted successfully')
