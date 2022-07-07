@@ -9,10 +9,15 @@ from .forms import *
 from .models import *
 
 
-class StatusPage(ListView):
+class StatusPage(LoginRequiredMixin, ListView):
     template_name = 'statuses/statuses.html'
     model = Statuses
     context_object_name = 'statuses'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'login'
+        self.restriction_message = _('You are not authorized! Please sign in.')
+        return super().dispatch(request, *args, **kwargs)
 
 
 class AddStatus(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -21,17 +26,32 @@ class AddStatus(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('statuses:list')
     success_message = _('Status created succesfully')
 
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'login'
+        self.restriction_message = _('You are not authorized! Please sign in.')
+        return super().dispatch(request, *args, **kwargs)
 
-class StatusUpdate(UpdateView):
+
+class StatusUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = 'statuses/status_update.html'
     model = Statuses
     fields = ['status_name']
     success_url = reverse_lazy('statuses:list')
 
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'login'
+        self.restriction_message = _('You are not authorized! Please sign in.')
+        return super().dispatch(request, *args, **kwargs)
 
-class StatusDelete(CustomDeleteView):
+
+class StatusDelete(LoginRequiredMixin, CustomDeleteView):
     template_name = 'statuses/status_delete.html'
     model = Statuses
     success_url = reverse_lazy('statuses:list')
     success_message = 'Статус удален успешно'
     unsuccess_message = 'Статус нельзя удалить, потому что он используется'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.redirect_url_while_restricted = 'login'
+        self.restriction_message = _('You are not authorized! Please sign in.')
+        return super().dispatch(request, *args, **kwargs)
