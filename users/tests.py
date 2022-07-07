@@ -32,9 +32,11 @@ class BaseTestCase(TestCase):
 
 class UserTestCase(BaseTestCase):
     def test_register_user(self):
-        response = self.client.post(self.register_user_url, self.correct_user_register,
+        self.client.post(self.register_user_url, self.correct_user_register,
                                     format='text/html')
-        # self.assertRedirects(response, self.register_user_url)
+        check_login = self.client.login(username=self.correct_user_register['username'],
+                                        password=self.correct_user_register['password'])
+        #logger.debug(check_login)
 
     def test_login(self):
         response = self.client.login(username='defaultusername1', password='Test1234')
@@ -44,6 +46,4 @@ class UserTestCase(BaseTestCase):
 
     def test_user_list(self):
         response = self.client.get(self.user_list)
-        response_tasks = list(response.context_data['users'])
-        logger.debug(response_tasks)
         self.assertEqual(response.status_code, 200)

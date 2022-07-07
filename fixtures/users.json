@@ -1,0 +1,74 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$xFfheGAhlqc96u0wFFzHks$lXY+nU7s4KnWsHJY+HKlZCMbWjnWxYI1UhoH5PrECXA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Frontend_master",
+    "first_name": "Игорь",
+    "last_name": "Бунин",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-07-07T12:18:10.280Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$NL35zivh3L1iTaxwxgIApu$SWdZmfC8fBFoidf68Tmykb2yn3Imppo4IknJRGxMzlo=",
+    "last_login": "2022-07-07T12:26:40.093Z",
+    "is_superuser": false,
+    "username": "Backen_Jun",
+    "first_name": "Алина",
+    "last_name": "Полетаева",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-07-07T12:18:33.049Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$ZuKGWxPyirX6naF4dOhmoX$zA/WH4DQZSvHFjvFitayLZvXSu+W9bpRHOEoakMVgqQ=",
+    "last_login": "2022-07-07T12:21:57.828Z",
+    "is_superuser": false,
+    "username": "Teamlead",
+    "first_name": "Илья",
+    "last_name": "Матрешкин",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-07-07T12:19:18.094Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$58CUDG3u6iZ0nZfYKaDDxc$q3DipmgM0tuEeqEm9BhD113YenIwmeyUxId/wIy8iCs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Designer_Lev",
+    "first_name": "Лев",
+    "last_name": "Анатольевич",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-07-07T12:21:08.490Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
