@@ -4,22 +4,19 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
-from django.views.generic import ListView, UpdateView, DeleteView, FormView
+from django.views.generic import UpdateView, DeleteView, FormView
+from django_filters.views import FilterView
 
 from task_manager.mixins import HandleNoPermissionMixin
 from .filters import *
 from .forms import *
 
 
-class TaskPage(LoginRequiredMixin, ListView):
+class TaskPage(LoginRequiredMixin, FilterView):
     template_name = 'tasks/list.html'
-    queryset = Tasks.objects.order_by('id')
+    model = Tasks
     context_object_name = 'tasks'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter'] = TaskFilter(self.request.GET, queryset=self.get_queryset())
-        return context
+    filterset_class = TaskFilter
 
 
 class AddTask(LoginRequiredMixin, SuccessMessageMixin, FormView):
