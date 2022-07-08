@@ -45,6 +45,6 @@ class StatusTestCase(BaseTestCase):
         response = self.client.get(self.status_page)
         self.assertEqual(response.status_code, 200)
         current_status = Status.objects.get(pk=3)
-        logger.debug(current_status.id)
+        #logger.debug(current_status.id)
         response = self.client.post(reverse('statuses:delete', args=[current_status.id]), follow=True)
         self.assertRedirects(response, reverse('statuses:list'))

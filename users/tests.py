@@ -9,13 +9,13 @@ class BaseTestCase(TestCase):
     def setUp(self):
         self.register_user_url = reverse('register')
         self.login_page = reverse('login')
-        self.user_list = reverse('users')
+        self.user_list = reverse('users:list')
         self.correct_user_register = {
             'username': 'testusername',
             'first_name': 'testfirstname',
             'last_name': 'testlastname',
-            'password': 'Test1234',
-            'password2': 'Test1234'
+            'password': 'QazWsx753',
+            'password2': 'QazWsx753'
         }
         return super().setUp()
 
@@ -32,11 +32,8 @@ class BaseTestCase(TestCase):
 
 class UserTestCase(BaseTestCase):
     def test_register_user(self):
-        self.client.post(self.register_user_url, self.correct_user_register,
-                                    format='text/html')
-        check_login = self.client.login(username=self.correct_user_register['username'],
-                                        password=self.correct_user_register['password'])
-        #logger.debug(check_login)
+        response = self.client.post(self.register_user_url, self.correct_user_register, follow=True)
+        self.assertRedirects(response, '/register/')
 
     def test_login(self):
         response = self.client.login(username='defaultusername1', password='Test1234')
