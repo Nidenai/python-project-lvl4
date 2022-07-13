@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-08 15:05+0000\n"
+"POT-Creation-Date: 2022-07-13 14:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgid "Name"
 msgstr "Имя"
 
 #: labels/models.py:7 statuses/models.py:6 tasks/models.py:12
-#: templates/labels/list.html:17 templates/tasks/list.html:31
+#: templates/labels/list.html:17
 msgid "Date"
 msgstr "Дата"
 
@@ -224,6 +224,12 @@ msgstr "Создать задачу"
 #: templates/tasks/list.html:17
 msgid "Filter"
 msgstr "Фильтр"
+
+#: templates/tasks/list.html:31
+#, fuzzy
+#| msgid "Created date"
+msgid "Created At"
+msgstr "Дата создания"
 
 #: templates/users/list.html:12
 msgid "Username"

@@ -38,7 +38,7 @@ all:
 
 
 local_pre:
-	python3 manage.py makemessages -l ru -i venv
+	python3 manage.py makemessages -l ru -i test_venv
 
 local_launch:
 	python3 manage.py compilemessages
