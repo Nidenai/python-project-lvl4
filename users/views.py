@@ -35,7 +35,7 @@ class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
     success_url = reverse_lazy('login')
     success_message = _('User changed successfully')
     restriction_message = _('NO')
-    redirect_url_while_restricted = reverse_lazy('users')
+    redirect_url_while_restricted = reverse_lazy('users:users')
 
     def test_func(self):
         user = self.get_object()
@@ -48,16 +48,16 @@ class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
         user = authenticate(username=username, password=password)
         login(self.request, user)
         messages.success(self.request, _('User changed successfully'))
-        return redirect('users')
+        return redirect('users:users')
 
 
 class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
     template_name = 'delete.html'
     model = User
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('users:users')
     success_message = _('User deleted successfully')
     restriction_message = _('NO')
-    redirect_url_while_restricted = 'users'
+    redirect_url_while_restricted = reverse_lazy('users:users')
 
     def test_func(self):
         user = self.get_object()
