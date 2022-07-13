@@ -24,7 +24,7 @@ class AddLabel(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
 class LabelUpdate(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = 'update.html'
     model = Labels
-    fields = ['label_name']
+    fields = ['name']
     success_url = reverse_lazy('labels:list')
     success_message = _('Label update succesfully')
 
