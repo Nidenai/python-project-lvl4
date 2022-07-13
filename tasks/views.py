@@ -22,12 +22,12 @@ class TaskPage(LoginRequiredMixin, FilterView):
 class AddTask(LoginRequiredMixin, SuccessMessageMixin, FormView):
     template_name = 'create.html'
     form_class = TaskForm
-    success_url = '/tasks'
+    success_url = reverse_lazy('tasks:list')
     success_message = _('Task created succesfully')
 
     def form_valid(self, form):
         task_form = form.save()
-        task_form.created_user = self.request.user
+        task_form.author = self.request.user
         task_form.save()
         return super().form_valid(form)
 
@@ -46,8 +46,8 @@ class TaskDescription(View):
 class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UpdateView):
     template_name = 'update.html'
     model = Tasks
-    fields = ['title', 'description', 'label', 'status']
-    success_url = reverse_lazy('tasks')
+    fields = ['name', 'description', 'labels', 'status', 'executor']
+    success_url = reverse_lazy('tasks:list')
     success_message = _('Task changed successfully')
 
 
@@ -55,12 +55,12 @@ class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
 class TaskDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
     template_name = 'delete.html'
     model = Tasks
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('tasks:list')
     success_message = _('Task deleted successfully')
 
     def test_func(self):
         task = self.get_object()
-        return self.request.user == task.created_user
+        return self.request.user == task.author
 
     def dispatch(self, request, *args, **kwargs):
         self.redirect_url_while_restricted = 'tasks'

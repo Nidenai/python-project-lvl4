@@ -26,7 +26,7 @@ class TaskFilter(FilterSet):
     def filter_self(self, queryset, name, value):
         if value:
             author = getattr(self.request, 'user', None)
-            queryset = queryset.filter(assigned_user=author)
+            queryset = queryset.filter(author=author)
         return queryset
 
     class Meta:

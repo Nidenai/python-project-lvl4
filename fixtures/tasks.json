@@ -3,13 +3,13 @@
   "model": "tasks.tasks",
   "pk": 1,
   "fields": {
-    "title": "Пофиксить баги во вьюхах",
+    "name": "Пофиксить баги во вьюхах",
     "description": "Вьюха users выдает ошибку на регистрации",
-    "task_date": "2022-07-07T12:24:55.682Z",
+    "created_at": "2022-07-07T12:24:55.682Z",
     "status": 2,
-    "created_user": 3,
-    "assigned_user": 1,
-    "label": [
+    "author": 3,
+    "executor": 1,
+    "labels": [
       1
     ]
   }
@@ -18,13 +18,13 @@
   "model": "tasks.tasks",
   "pk": 2,
   "fields": {
-    "title": "Добавить функцию красивой загрузки страницы",
+    "name": "Добавить функцию красивой загрузки страницы",
     "description": "Необходимо что-то вроде полосы загрузки при логине",
-    "task_date": "2022-07-07T12:25:44.767Z",
+    "created_at": "2022-07-07T12:25:44.767Z",
     "status": 1,
-    "created_user": 3,
-    "assigned_user": 2,
-    "label": [
+    "author": 3,
+    "executor": 2,
+    "labels": [
       2,
       3
     ]
@@ -34,13 +34,13 @@
   "model": "tasks.tasks",
   "pk": 3,
   "fields": {
-    "title": "Летний корпоратив",
+    "name": "Летний корпоратив",
     "description": "Срочно надо обсудить",
-    "task_date": "2022-07-07T12:26:08.037Z",
+    "created_at": "2022-07-07T12:26:08.037Z",
     "status": 1,
-    "created_user": 3,
-    "assigned_user": 3,
-    "label": [
+    "author": 3,
+    "executor": 3,
+    "labels": [
       1,
       2,
       3,
@@ -52,13 +52,13 @@
   "model": "tasks.tasks",
   "pk": 4,
   "fields": {
-    "title": "Планирование обучения по бэку",
+    "name": "Планирование обучения по бэку",
     "description": "Необходимо время для обучения",
-    "task_date": "2022-07-07T12:27:20.855Z",
+    "created_at": "2022-07-07T12:27:20.855Z",
     "status": 1,
-    "created_user": 2,
-    "assigned_user": 3,
-    "label": [
+    "author": 2,
+    "executor": 3,
+    "labels": [
       5
     ]
   }

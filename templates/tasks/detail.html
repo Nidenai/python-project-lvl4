@@ -15,7 +15,7 @@
             Name:
         </div>
         <div class="col-sm">
-            {{task.title}}
+            {{task.name}}
         </div>
     </div>
     <div class="row">
@@ -31,7 +31,7 @@
             Date:
         </div>
         <div class="col-sm">
-            {{task.task_date}}
+            {{task.created_at}}
         </div>
     </div>
 
@@ -40,7 +40,7 @@
             Labels:
         </div>
         <div class="col-sm">
-            {% for label in task.label.all %}
+            {% for label in task.labels.all %}
             <li>{{ label }}</li>
             {% endfor %}
         </div>
@@ -60,7 +60,7 @@
             Author
         </div>
         <div class="col-sm">
-            {{task.created_user}}
+            {{task.author}}
         </div>
     </div>
     <div class="w-100"></div>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="col-sm">
-            {{task.assigned_user}}
+            {{task.executor}}
         </div>
     </div>
 </div>
