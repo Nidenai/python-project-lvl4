@@ -33,7 +33,7 @@ msgstr "Дата"
 
 #: labels/models.py:10 tasks/filters.py:20 tasks/models.py:13
 msgid "Label"
-msgstr "Метка"
+msgstr "Метки"
 
 #: labels/models.py:11 templates/base.html:49 templates/base.html:61
 #: templates/labels/list.html:3
