@@ -63,6 +63,6 @@ class TaskDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
         return self.request.user == task.author
 
     def dispatch(self, request, *args, **kwargs):
-        self.redirect_url_while_restricted = 'tasks'
+        self.redirect_url_while_restricted = success_url = reverse_lazy('tasks:list')
         self.restriction_message = _("Only the author of that task can delete a task!")
         return super().dispatch(request, *args, **kwargs)

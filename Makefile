@@ -42,3 +42,10 @@ local_pre:
 
 local_launch:
 	python3 manage.py compilemessages
+
+
+data:
+	python3 manage.py loaddata fixtures/users.json
+	python3 manage.py loaddata fixtures/statuses.json
+	python3 manage.py loaddata fixtures/labels.json
+	python3 manage.py loaddata fixtures/tasks.json
