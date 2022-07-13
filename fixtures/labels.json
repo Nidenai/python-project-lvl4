@@ -3,40 +3,40 @@
   "model": "labels.labels",
   "pk": 1,
   "fields": {
-    "label_name": "Бэк",
-    "label_date": "2022-07-07T12:22:53.422Z"
+    "name": "Бэк",
+    "date": "2022-07-07T12:22:53.422Z"
   }
 },
 {
   "model": "labels.labels",
   "pk": 2,
   "fields": {
-    "label_name": "Фронт",
-    "label_date": "2022-07-07T12:22:59.033Z"
+    "name": "Фронт",
+    "date": "2022-07-07T12:22:59.033Z"
   }
 },
 {
   "model": "labels.labels",
   "pk": 3,
   "fields": {
-    "label_name": "Дизайн",
-    "label_date": "2022-07-07T12:23:04.955Z"
+    "name": "Дизайн",
+    "date": "2022-07-07T12:23:04.955Z"
   }
 },
 {
   "model": "labels.labels",
   "pk": 4,
   "fields": {
-    "label_name": "Срочно",
-    "label_date": "2022-07-07T12:23:08.457Z"
+    "name": "Срочно",
+    "date": "2022-07-07T12:23:08.457Z"
   }
 },
 {
   "model": "labels.labels",
   "pk": 5,
   "fields": {
-    "label_name": "Организация",
-    "label_date": "2022-07-07T12:23:16.707Z"
+    "name": "Организация",
+    "date": "2022-07-07T12:23:16.707Z"
   }
 }
 ]

@@ -11,7 +11,7 @@ class BaseTestCase(TestCase):
 
     def setUp(self):
         self.status_for_test = {
-            'status_name': 'test_status_name'
+            'name': 'test_status_name'
         }
         self.status_page = reverse('statuses:list')
         self.user = User.objects.get(pk=1)
@@ -27,19 +27,19 @@ class StatusTestCase(BaseTestCase):
 
 
     def test_status_create(self):
-        status = {'status_name': 'Test_Status'}
+        status = {'name': 'Test_Status'}
         self.client.force_login(self.user)
         response = self.client.get(self.status_page)
         self.assertEqual(response.status_code, 200)
         response = self.client.post(reverse('statuses:create'), status, follow=True)
         self.assertRedirects(response, '/statuses/')
         self.assertContains(response, 'Статус успешно создан')
-        created_status = Status.objects.get(status_name=status['status_name'])
+        created_status = Status.objects.get(name=status['name'])
         #logger.debug(created_status)
-        self.assertEquals(created_status.status_name, 'Test_Status')
+        self.assertEquals(created_status.name, 'Test_Status')
 
     def test_status_delete(self):
-        status_for_delete = {'status_name': 'Status_for_Delete'}
+        status_for_delete = {'name': 'Status_for_Delete'}
         self.client.force_login(self.user)
         self.client.post(reverse('statuses:create'), status_for_delete, follow=True)
         response = self.client.get(self.status_page)

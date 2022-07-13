@@ -22,8 +22,8 @@
     {% for label in labels %}
     <tr>
         <th scope="row">{{label.id}}</th>
-        <td>{{label.label_name}}</td>
-        <td>{{label.label_date}}</td>
+        <td>{{label.name}}</td>
+        <td>{{label.date}}</td>
         <td>
             <a href="{% url 'labels:update' label.id %}">{% translate "Update" %}</a>
             <a href="{% url 'labels:delete' label.id %}">{% translate "Delete" %}</a>

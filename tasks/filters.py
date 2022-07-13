@@ -10,8 +10,8 @@ from users.models import User
 
 
 class TaskFilter(FilterSet):
-    statuses = Status.objects.values_list('id', 'status_name', named=True).all()
-    labels = Labels.objects.values_list('id', 'label_name', named=True).all()
+    statuses = Status.objects.values_list('id', 'name', named=True).all()
+    labels = Labels.objects.values_list('id', 'name', named=True).all()
     users = User.objects.values_list(
         'id', Concat('first_name', Value(' '), 'last_name'), named=True
     ).all()

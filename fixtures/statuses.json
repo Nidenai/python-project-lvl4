@@ -3,16 +3,16 @@
   "model": "statuses.status",
   "pk": 1,
   "fields": {
-    "status_name": "В процессе",
-    "status_date": "2022-07-07T12:23:31.157Z"
+    "name": "В процессе",
+    "date": "2022-07-07T12:23:31.157Z"
   }
 },
 {
   "model": "statuses.status",
   "pk": 2,
   "fields": {
-    "status_name": "Выполнено",
-    "status_date": "2022-07-07T12:23:35.926Z"
+    "name": "Выполнено",
+    "date": "2022-07-07T12:23:35.926Z"
   }
 }
 ]
