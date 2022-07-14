@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    <form action="{% url 'users:register' %}" method="post">
+    <form method="post">
         {% csrf_token %}
     {% bootstrap_form form %}
     <button type="submit" class="btn btn-success">{% translate "Register" %}</button>
