@@ -8,7 +8,7 @@ from users.models import User
 
 class Tasks(models.Model):
     name = models.CharField(max_length=150, verbose_name=_('Name'))
-    description = models.TextField(blank=True, null=True, verbose_name=_('Description'))
+    description = models.TextField(max_length=500, verbose_name=_('Description'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Date'))
     labels = models.ManyToManyField(Labels, verbose_name=_('Label'), related_name='labels')
     status = models.ForeignKey(Status, on_delete=models.PROTECT, verbose_name=_('Status'))
