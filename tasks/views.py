@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
-from django.views.generic import UpdateView, DeleteView, FormView
+from django.views.generic import UpdateView, DeleteView, FormView, CreateView
 from django_filters.views import FilterView
 
 from task_manager.mixins import HandleNoPermissionMixin
@@ -19,9 +19,10 @@ class TaskPage(LoginRequiredMixin, FilterView):
     filterset_class = TaskFilter
 
 
-class AddTask(LoginRequiredMixin, SuccessMessageMixin, FormView):
+class AddTask(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'create.html'
-    form_class = TaskForm
+    model = Tasks
+    fields = ['name', 'description', 'status', 'executor', 'labels']
     success_url = reverse_lazy('tasks:list')
     success_message = _('Task created succesfully')
 
@@ -46,7 +47,7 @@ class TaskDescription(View):
 class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UpdateView):
     template_name = 'update.html'
     model = Tasks
-    fields = ['name', 'description', 'labels', 'status', 'executor']
+    fields = ['name', 'description', 'status', 'executor', 'labels']
     success_url = reverse_lazy('tasks:list')
     success_message = _('Task changed successfully')
 
