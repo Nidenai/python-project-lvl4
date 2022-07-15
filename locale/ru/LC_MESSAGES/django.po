@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-13 14:52+0000\n"
+"POT-Creation-Date: 2022-07-15 16:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,19 +106,19 @@ msgstr "Задача"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: tasks/views.py:26
+#: tasks/views.py:27
 msgid "Task created succesfully"
-msgstr "Задача успешно создана"
+msgstr "Задача успешно создана1111
 
-#: tasks/views.py:51
+#: tasks/views.py:52
 msgid "Task changed successfully"
 msgstr "Задача успешно изменена"
 
-#: tasks/views.py:59
+#: tasks/views.py:60
 msgid "Task deleted successfully"
 msgstr "Задача успешно удалена"
 
-#: tasks/views.py:67
+#: tasks/views.py:68
 msgid "Only the author of that task can delete a task!"
 msgstr "Задачу может удалить только её автор"
 
@@ -150,7 +150,7 @@ msgstr "Главная страница"
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/create.html:4 templates/create.html:10
+#: templates/create.html:4 templates/create.html:13
 msgid "Create"
 msgstr "Создать"
 
@@ -226,8 +226,6 @@ msgid "Filter"
 msgstr "Фильтр"
 
 #: templates/tasks/list.html:31
-#, fuzzy
-#| msgid "Created date"
 msgid "Created At"
 msgstr "Дата создания"
 
@@ -253,7 +251,7 @@ msgstr "Пользователь успешно изменён"
 
 #: users/views.py:37 users/views.py:59
 msgid "NO"
-msgstr ""
+msgstr "Плейсхолдер"
 
 #: users/views.py:58
 msgid "User deleted successfully"
