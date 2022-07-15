@@ -108,7 +108,7 @@ msgstr "Задачи"
 
 #: tasks/views.py:27
 msgid "Task created succesfully"
-msgstr "Задача успешно создана1111"
+msgstr "Задача успешно создана"
 
 #: tasks/views.py:52
 msgid "Task changed successfully"
