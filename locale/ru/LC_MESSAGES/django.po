@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-17 13:56+0000\n"
+"POT-Creation-Date: 2022-07-17 14:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr "Имя"
 msgid "Date"
 msgstr "Дата"
 
-#: labels/models.py:10 tasks/filters.py:20 tasks/models.py:13
+#: labels/models.py:10 tasks/models.py:13
 msgid "Label"
 msgstr "Метки"
 
@@ -52,8 +52,7 @@ msgstr "Метка успешно изменена"
 msgid "Label delete succesfully"
 msgstr "Метка успешно удалена"
 
-#: statuses/models.py:9 tasks/filters.py:18 tasks/models.py:14
-#: templates/tasks/list.html:28
+#: statuses/models.py:9 tasks/models.py:14 templates/tasks/list.html:28
 msgid "Status"
 msgstr "Статус"
 
@@ -81,11 +80,11 @@ msgstr "Невозможно удалить статус, потому что о
 msgid "You are not authorized! Please sign in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: tasks/filters.py:19 tasks/models.py:18 templates/tasks/list.html:30
-msgid "Executor"
-msgstr "Исполнитель"
+#: tasks/filters.py:9
+msgid "Label_one"
+msgstr "Метка"
 
-#: tasks/filters.py:21
+#: tasks/filters.py:10
 msgid "Only my tasks"
 msgstr "Только свои задачи"
 
@@ -96,6 +95,10 @@ msgstr "Описание"
 #: tasks/models.py:16 templates/tasks/list.html:29
 msgid "Author"
 msgstr "Автор"
+
+#: tasks/models.py:18 templates/tasks/list.html:30
+msgid "Executor"
+msgstr "Исполнитель"
 
 #: tasks/models.py:21 templates/tasks/detail.html:3
 msgid "Task"
