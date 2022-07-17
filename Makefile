@@ -7,8 +7,12 @@ export:
 poetry:
 	export PATH="$HOME/.local/bin:$PATH"
 
-venv:
-	source venv/bin/activate
+activate:
+	cd ..
+	source django-venv/bin/activate
+	cd python-project-lvl4
+
+
 
 req:
 	pip freeze > requirements.txt
@@ -49,3 +53,7 @@ data:
 	python3 manage.py loaddata fixtures/statuses.json
 	python3 manage.py loaddata fixtures/labels.json
 	python3 manage.py loaddata fixtures/tasks.json
+
+
+lint:
+	poetry run flake8

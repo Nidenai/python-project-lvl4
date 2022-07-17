@@ -4,8 +4,8 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, UpdateView, CreateView
 
 from task_manager.mixins import CustomDeleteView, CustomLoginRequiredMixin
-from .forms import *
-from .models import *
+from .forms import StatusForm
+from .models import Status
 
 
 class StatusPage(CustomLoginRequiredMixin, ListView):

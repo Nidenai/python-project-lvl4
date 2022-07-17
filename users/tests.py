@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.urls import reverse
-from loguru import logger
 
 from .models import User
 
@@ -21,24 +20,26 @@ class BaseTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        user1 = User.objects.create_user('defaultusername1', email=None, password='Test1234',
-                                        first_name='defaultfirstname1',
-                                        last_name='defaultlastname1')
+        user1 = User.objects.create_user('defaultusername1',
+                                         email=None, password='Test1234',
+                                         first_name='defaultfirstname1',  # noqa
+                                         last_name='defaultlastname1')  # noqa
         user1.save()
-        user2 = User.objects.create_user('defaultusername2', email=None, password='Test1234',
+        user2 = User.objects.create_user('defaultusername2',
+                                         email=None, password='Test1234',
                                          first_name='defaultfirstname2',
                                          last_name='defaultlastname2')
         user2.save()
 
+
 class UserTestCase(BaseTestCase):
-   # def test_register_user(self):
-       # response = self.client.post(self.register_user_url, self.correct_user_register, follow=True)
-       # self.assertRedirects(response, '/register/')
 
     def test_login(self):
-        response = self.client.login(username='defaultusername1', password='Test1234')
+        response = self.client.login(username='defaultusername1',
+                                     password='Test1234')
         self.assertEqual(response, True)
-        response = self.client.login(username='defaultusern2ame1', password='Test1234')
+        response = self.client.login(username='defaultusern2ame1',
+                                     password='Test1234')
         self.assertEqual(response, False)
 
     def test_user_list(self):

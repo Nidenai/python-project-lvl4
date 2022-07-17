@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import DeleteView
@@ -35,11 +35,10 @@ class CustomDeleteView(SuccessMessageMixin, DeleteView):
     success_message = ''
     unsuccess_message = ''
 
-
     def form_valid(self, form):
         try:
             self.object.delete()
-        except ProtectedError:
+        except ProtectedError:  # noqa
             messages.error(self.request, self.unsuccess_message)
             return redirect(self.success_url)
         else:

@@ -1,6 +1,6 @@
-from django.urls import path, include
+from django.urls import path
 
-from .views import *
+from .views import Register, UserList, UserUpdate, UserDelete
 
 app_name = 'users'
 urlpatterns = [

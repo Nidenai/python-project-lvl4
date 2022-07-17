@@ -4,12 +4,12 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
-from django.views.generic import UpdateView, DeleteView, FormView, CreateView
+from django.views.generic import UpdateView, DeleteView, CreateView
 from django_filters.views import FilterView
 
 from task_manager.mixins import HandleNoPermissionMixin
-from .filters import *
-from .forms import *
+from .filters import TaskFilter
+from .models import Tasks
 
 
 class TaskPage(LoginRequiredMixin, FilterView):
@@ -44,7 +44,8 @@ class TaskDescription(View):
         return render(request, self.template_name, context)
 
 
-class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin,
+                 SuccessMessageMixin, UpdateView):
     template_name = 'update.html'
     model = Tasks
     fields = ['name', 'description', 'status', 'executor', 'labels']
@@ -52,8 +53,8 @@ class TaskUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
     success_message = _('Task changed successfully')
 
 
-
-class TaskDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
+class TaskDelete(LoginRequiredMixin, HandleNoPermissionMixin,
+                 SuccessMessageMixin, UserPassesTestMixin, DeleteView):
     template_name = 'delete.html'
     model = Tasks
     success_url = reverse_lazy('tasks:list')
@@ -65,5 +66,6 @@ class TaskDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
 
     def dispatch(self, request, *args, **kwargs):
         self.redirect_url_while_restricted = reverse_lazy('tasks:list')
-        self.restriction_message = _("Only the author of that task can delete a task!")
+        self.restriction_message = \
+            _("Only the author of that task can delete a task!")
         return super().dispatch(request, *args, **kwargs)

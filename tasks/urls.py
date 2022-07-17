@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import *
+from .views import TaskPage, AddTask, \
+    TaskDescription, TaskUpdate, TaskDelete
 
 app_name = 'tasks'
 urlpatterns = [

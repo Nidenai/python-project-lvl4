@@ -5,8 +5,10 @@ from django_filters import FilterSet, BooleanFilter, ModelChoiceFilter
 from tasks.models import Tasks
 from labels.models import Labels
 
+
 class TaskFilter(FilterSet):
-    labels = ModelChoiceFilter(label=_('Label_one'), queryset=Labels.objects.all())
+    labels = ModelChoiceFilter(label=_('Label_one'),
+                               queryset=Labels.objects.all())
     self_task = BooleanFilter(label=_('Only my tasks'),
                               widget=forms.CheckboxInput,
                               method='filter_self',

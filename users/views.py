@@ -3,10 +3,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 from task_manager.mixins import HandleNoPermissionMixin
@@ -28,7 +27,7 @@ class UserList(ListView):
     context_object_name = 'users'
 
 
-class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, UpdateView):
+class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, UpdateView): # noqa
     template_name = 'update.html'
     model = User
     form_class = UserCreationForm
@@ -51,7 +50,7 @@ class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
         return redirect('users:users')
 
 
-class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView):
+class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixin, UserPassesTestMixin, DeleteView): # noqa
     template_name = 'delete.html'
     model = User
     success_url = reverse_lazy('users:users')
@@ -62,7 +61,6 @@ class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
     def test_func(self):
         user = self.get_object()
         return self.request.user.id == user.id
-
 
 
 class CustomLogin(SuccessMessageMixin, LoginView):
