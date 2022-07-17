@@ -87,7 +87,7 @@ msgstr "Исполнитель"
 
 #: tasks/filters.py:21
 msgid "Only my tasks"
-msgstr "Только мои задачи"
+msgstr "Только свои задачи"
 
 #: tasks/models.py:11
 msgid "Description"
