@@ -9,8 +9,8 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 from task_manager.mixins import HandleNoPermissionMixin
-from users.forms import UserCreationForm
-from users.models import User
+from task_manager.apps.users.forms import UserCreationForm
+from task_manager.apps.users.models import User
 
 
 class Register(SuccessMessageMixin, CreateView):

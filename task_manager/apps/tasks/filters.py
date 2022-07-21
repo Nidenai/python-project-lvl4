@@ -2,8 +2,8 @@ from django import forms
 from django.utils.translation import gettext as _
 from django_filters import FilterSet, BooleanFilter, ModelChoiceFilter
 
-from tasks.models import Tasks
-from labels.models import Labels
+from task_manager.apps.tasks.models import Tasks
+from task_manager.apps.labels.models import Labels
 
 
 class TaskFilter(FilterSet):
