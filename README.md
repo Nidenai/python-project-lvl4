@@ -1,4 +1,4 @@
-#Описание проекта
+# Описание проекта
  
 Перед вами приложение менеджера задач.
 Для использования необходима регистрация и авторизация.
@@ -6,9 +6,9 @@
 Задачи можно фильтровать.
 
 
-#Демонстрационная версия на Heroku:
+# Демонстрационная версия на Heroku:
 
-https://afternoon-citadel-86375.herokuapp.com/
+[Страница проекта](https://afternoon-citadel-86375.herokuapp.com/)
 
 
 
@@ -22,13 +22,13 @@ https://afternoon-citadel-86375.herokuapp.com/
 [![Linter](https://github.com/Nidenai/python-project-lvl4/workflows/linter.yml/badge.svg)](https://github.com/Nidenai/python-project-lvl4/actions/workflows/linter.yml)
 
 
-#Документация к проекту:
+# Документация к проекту:
 
-##Инсталляция приложения.
+## Инсталляция приложения.
 
-###Требования:
+### Требования:
 
-У вас должен быть установлен python 3, poetry (https://python-poetry.org/).
+У вас должен быть установлен python 3, [poetry](https://python-poetry.org/).
 
 Установите приложение командной: 
 https://github.com/Nidenai/python-project-lvl4.git
@@ -36,9 +36,9 @@ https://github.com/Nidenai/python-project-lvl4.git
 Затем установите зависимости из файла requirements.txt.
 
 После этого, необходимо создать файл .env и добавить туда следующие переменные:
-SECRET_KEY
-DATABASE_ENGINE
-DATABASE_NAME
-ROLL_KEY
-DEBUG
+* SECRET_KEY
+* DATABASE_ENGINE
+* DATABASE_NAME
+* ROLL_KEY
+* DEBUG
 
