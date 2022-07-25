@@ -28,4 +28,4 @@ jobs:
       - name: Run Tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        run: make tests
+        run: make test
