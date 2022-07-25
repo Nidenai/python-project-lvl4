@@ -16,6 +16,8 @@
 
 [![Linter](https://github.com/Nidenai/python-project-lvl4/workflows/linter/badge.svg)](https://github.com/Nidenai/python-project-lvl4/linter)
 
+[![Tests](https://github.com/Nidenai/python-project-lvl4/workflows/tests/badge.svg)](https://github.com/Nidenai/python-project-lvl4/tests)
+
 
 ## Инсталляция приложения
 
