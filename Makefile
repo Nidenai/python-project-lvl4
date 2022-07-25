@@ -57,3 +57,6 @@ data:
 
 lint:
 	poetry run flake8
+
+test:
+	python3 manage.py test

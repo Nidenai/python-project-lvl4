@@ -5,8 +5,9 @@ from task_manager.apps.statuses.models import Status
 from task_manager.apps.users.models import User
 
 
-class BaseTestCase(TestCase):
-    fixtures = ['users.json'], ['statuses.json']
+class StatusesTestCase(TestCase):
+    fixtures = ['users.json'], ['statuses.json'], \
+               ['tasks.json'], ['labels.json']
 
     def setUp(self):
         self.status_for_test = {
@@ -15,10 +16,9 @@ class BaseTestCase(TestCase):
         self.status_page = reverse('statuses:list')
         self.user = User.objects.get(pk=1)
         self.current_status = Status.objects.get(pk=1)
+        self.another_status = Status.objects.get(pk=2)
         return super().setUp()
 
-
-class StatusTestCase(BaseTestCase):
     def test_status_page(self):
         response = self.client.get(self.status_page)
         self.assertEqual(response.status_code, 302)
@@ -47,3 +47,35 @@ class StatusTestCase(BaseTestCase):
                                             args=[current_status.id]),
                                     follow=True)
         self.assertRedirects(response, reverse('statuses:list'))
+
+    def test_status_update(self):
+        self.client.force_login(self.user)
+        update_url = reverse('statuses:update',
+                             args=(self.current_status.id,))
+        updated_status = {'name': 'В процессе'}
+        response = self.client.post(update_url,
+                                    updated_status, follow=True)
+        self.assertRedirects(
+            response,
+            '/statuses/',
+            status_code=302,
+            target_status_code=200,
+            fetch_redirect_response=True,
+        )
+        self.assertContains(response, 'Статус успешно изменён')
+
+    def test_delete_using_status(self):
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('statuses:delete',
+                                            args=(self.another_status.id,)),
+                                    follow=True)
+        self.assertRedirects(
+            response,
+            '/statuses/',
+            status_code=302,
+            target_status_code=200,
+            fetch_redirect_response=True,
+        )
+        self.assertContains(
+            response,
+            'Невозможно удалить статус, потому что он используется')
