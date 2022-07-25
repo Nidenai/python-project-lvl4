@@ -17,22 +17,23 @@
 [![Linter](https://github.com/Nidenai/python-project-lvl4/workflows/linter/badge.svg)](https://github.com/Nidenai/python-project-lvl4/linter)
 
 
-## Инсталляция приложения.
+## Инсталляция приложения
 
-### Требования:
+1. Необходимо установить [python3](https://www.python.org/downloads/)
 
-1. У вас должен быть установлен `python 3`, [poetry](https://python-poetry.org/).
+2. Необходимо установить [poetry](https://python-poetry.org/).
 
-2. Установите приложение командной: 
+3. Установите приложение командной: 
 `git clone https://github.com/Nidenai/python-project-lvl4.git`
 
-3. Затем установите все библиотеки из файла командой:
+4. Затем установите все библиотеки из файла командой:
 `pip install -r requirements. txt`
 
-4. После этого, необходимо создать файл `.env` и добавить туда следующие переменные:
+5. После этого, необходимо создать файл `.env` и добавить туда следующие переменные:
 * `SECRET_KEY`
 * `DATABASE_ENGINE`
 * `DATABASE_NAME`
 * `ROLL_KEY`
 * `DEBUG`
 
+6. Затем можно запустить приложение командой `make start`

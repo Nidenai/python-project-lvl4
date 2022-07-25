@@ -76,3 +76,30 @@ class UserTestCase(TestCase):
         )
         self.assertFalse(auth.get_user(self.client).is_authenticated)
         self.assertContains(response, 'Вы разлогинены')
+
+    def test_update_and_delete_another_user(self):
+        self.client.force_login(self.first_user)
+        response = self.client.post(reverse(
+            'users:delete',
+            args=(self.second_user.id, )), follow=True)
+        self.assertTrue(User.objects.filter(pk=self.second_user.id).exists())
+        self.assertRedirects(
+            response,
+            '/users/',
+            status_code=302,
+            target_status_code=200,
+            fetch_redirect_response=True,
+        )
+        self.assertContains(response, 'У вас нет прав для изменения другого пользователя') # noqa
+        response = self.client.post(reverse(
+            'users:update',
+            args=(self.second_user.id, )), follow=True)
+        self.assertTrue(User.objects.filter(pk=self.second_user.id).exists())
+        self.assertRedirects(
+            response,
+            '/users/',
+            status_code=302,
+            target_status_code=200,
+            fetch_redirect_response=True,
+        )
+        self.assertContains(response, 'У вас нет прав для изменения другого пользователя') # noqa
