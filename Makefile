@@ -37,3 +37,21 @@ coverage:
 	poetry run coverage run manage.py test
 	poetry run coverage xml
 	poetry run coverage report
+
+install:
+	poetry install
+
+build:
+	poetry build
+
+publish:
+	poetry publish --dry-run
+
+package-install:
+	python3 -m pip install --user --force-reinstall dist/*.whl
+
+all:
+	make install
+	make build
+	make publish
+	make package-install
