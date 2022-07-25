@@ -27,7 +27,7 @@
 `git clone https://github.com/Nidenai/python-project-lvl4.git`
 
 4. Затем установите все библиотеки из файла командой:
-`pip install -r requirements. txt`
+`pip install -r requirements.txt`
 
 5. После этого, необходимо создать файл `.env` и добавить туда следующие переменные:
 * `SECRET_KEY`
