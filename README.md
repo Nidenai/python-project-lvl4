@@ -1,4 +1,4 @@
-# Описание проекта
+## Описание проекта
  
 Перед вами приложение менеджера задач.
 Для использования необходима регистрация и авторизация.
@@ -6,12 +6,7 @@
 Задачи можно фильтровать.
 
 
-# Демонстрационная версия на Heroku:
-
-[Страница проекта](https://afternoon-citadel-86375.herokuapp.com/)
-
-
-
+## [Страница проекта](https://afternoon-citadel-86375.herokuapp.com/)
 
 [![Actions Status](https://github.com/Nidenai/python-project-lvl4/workflows/hexlet-check/badge.svg)](https://github.com/Nidenai/python-project-lvl4/actions)
 
@@ -19,26 +14,25 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/845c9ad13166925bdb85/test_coverage)](https://codeclimate.com/github/Nidenai/python-project-lvl4/test_coverage)
 
-[![Linter](https://github.com/Nidenai/python-project-lvl4/workflows/linter.yml/badge.svg)](https://github.com/Nidenai/python-project-lvl4/actions/workflows/linter.yml)
+[![Linter](https://github.com/Nidenai/python-project-lvl4/workflows/linter/badge.svg)](https://github.com/Nidenai/python-project-lvl4/linter)
 
-
-# Документация к проекту:
 
 ## Инсталляция приложения.
 
 ### Требования:
 
-У вас должен быть установлен python 3, [poetry](https://python-poetry.org/).
+1. У вас должен быть установлен `python 3`, [poetry](https://python-poetry.org/).
 
-Установите приложение командной: 
-https://github.com/Nidenai/python-project-lvl4.git
+2. Установите приложение командной: 
+`git clone https://github.com/Nidenai/python-project-lvl4.git`
 
-Затем установите зависимости из файла requirements.txt.
+3. Затем установите все библиотеки из файла командой:
+`pip install -r requirements. txt`
 
-После этого, необходимо создать файл .env и добавить туда следующие переменные:
-* SECRET_KEY
-* DATABASE_ENGINE
-* DATABASE_NAME
-* ROLL_KEY
-* DEBUG
+4. После этого, необходимо создать файл `.env` и добавить туда следующие переменные:
+* `SECRET_KEY`
+* `DATABASE_ENGINE`
+* `DATABASE_NAME`
+* `ROLL_KEY`
+* `DEBUG`
 
