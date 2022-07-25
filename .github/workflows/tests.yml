@@ -33,11 +33,10 @@ jobs:
           DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
           ROLL_KEY: ${{ secrets.ROLL_KEY }}
           DEBUG: ${{ secrets.DEBUG }}
-        run: |
-          make test
-          - name:  Coverage report
-            uses: paambaati/codeclimate-action@v2.7.5
-            env:
-              CC_TEST_REPORTER_ID: 126f6bf1854ca35575654c8b7462fedfc64185d9b81a479f7c2dfa50ad3590d6
-            with:
-              coverageCommand: make coverage
+        run: make test
+      - name:  Coverage report
+        uses: paambaati/codeclimate-action@v2.7.5
+        env:
+            CC_TEST_REPORTER_ID: 126f6bf1854ca35575654c8b7462fedfc64185d9b81a479f7c2dfa50ad3590d6
+        with:
+            coverageCommand: make coverage
