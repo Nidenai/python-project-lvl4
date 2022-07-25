@@ -33,7 +33,8 @@ class UserUpdate(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     success_message = _('User changed successfully')
-    restriction_message = _('У вас нет прав для изменения другого пользователя')
+    restriction_message = \
+        _('У вас нет прав для изменения другого пользователя')
     redirect_url_while_restricted = reverse_lazy('users:users')
 
     def test_func(self):
@@ -55,7 +56,8 @@ class UserDelete(LoginRequiredMixin, HandleNoPermissionMixin, SuccessMessageMixi
     model = User
     success_url = reverse_lazy('users:users')
     success_message = _('User deleted successfully')
-    restriction_message = _('У вас нет прав для изменения другого пользователя')
+    restriction_message = \
+        _('У вас нет прав для изменения другого пользователя')
     redirect_url_while_restricted = reverse_lazy('users:users')
 
     def test_func(self):
