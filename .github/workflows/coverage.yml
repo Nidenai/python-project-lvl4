@@ -26,11 +26,15 @@ jobs:
           poetry update
           make install
           pip install -r requirements.txt
-      - name: Run Tests
+      - name: Run Coverage
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           DATABASE_ENGINE: ${{ secrets.DATABASE_ENGINE }}
           DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
           ROLL_KEY: ${{ secrets.ROLL_KEY }}
           DEBUG: ${{ secrets.DEBUG }}
-        run: make test
+          CC_TEST_REPORTER_ID: 126f6bf1854ca35575654c8b7462fedfc64185d9b81a479f7c2dfa50ad3590d6
+        with:
+          coverageCommand: make coverage
+          debug: true
